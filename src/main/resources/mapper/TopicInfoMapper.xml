@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team_manage.mapper.TopicInfoMapper">
+    <update id="setNum">
+        UPDATE topic_info
+        <set>
+            <if test="type == 1">
+                topic_hot = topic_hot
+                <if test="change == 1">
+                    + #{num}
+                </if>
+                <if test="change == 2">
+                    - #{num}
+                </if>
+            </if>
+            <if test="type == 2">
+                collect_num = collect_num
+                <if test="change == 1">
+                    + #{num}
+                </if>
+                <if test="change == 2">
+                    - #{num}
+                </if>
+            </if>
+            <if test="type == 3">
+                like_num = like_num
+                <if test="change == 1">
+                    + #{num}
+                </if>
+                <if test="change == 2">
+                    - #{num}
+                </if>
+            </if>
+        </set>
+        WHERE topic_id = #{topicId}
+    </update>
+
+    <select id="wxPage" resultType="com.team_manage.controller.topic.vo.TopicInfoVO">
+        SELECT
+            ti.topic_id,
+            ti.topic_title,
+            ti.topic_time,
+            ti.topic_content,
+            ti.topic_img,
+            ti.user_id,
+            ti.topic_hot,
+            ti.collect_num,
+            ti.like_num,
+            su.user_name,
+            su.user_avatar,
+            IF( ci.collect_id IS NOT NULL, 1, 0 ) AS is_collect,
+            IF( li.like_id IS NOT NULL, 1, 0 ) AS is_like,
+            IFNULL( cif.comment_num, 0 ) AS comment_num
+        FROM
+            topic_info ti
+                LEFT JOIN sys_user su ON ti.user_id = su.user_id
+                LEFT JOIN ( SELECT collect_id, business_id FROM collect_info WHERE user_id = #{qry.userId} AND delete_flag = 0 ) ci ON ci.business_id = ti.topic_id
+                LEFT JOIN ( SELECT like_id, business_id FROM like_info WHERE user_id = #{qry.userId} AND delete_flag = 0 ) li ON li.business_id = ti.topic_id
+                LEFT JOIN ( SELECT topic_id, COUNT(*) AS comment_num FROM comment_info WHERE delete_flag = 0 GROUP BY topic_id) cif ON cif.topic_id = ti.topic_id
+        WHERE ti.delete_flag = 0
+        <if test="qry.keyWord != null and qry.keyWord != ''">
+            AND (ti.topic_title LIKE CONCAT('%',#{qry.keyWord},'%') OR ti.topic_content LIKE CONCAT('%',#{qry.keyWord},'%'))
+        </if>
+        <if test="qry.sort == null or qry.sort == 0">
+            ORDER BY ti.topic_hot DESC
+        </if>
+        <if test="qry.sort == 1">
+            ORDER BY ti.create_time DESC
+        </if>
+        <if test="qry.sort == 2">
+            ORDER BY ti.collect_num DESC
+        </if>
+        <if test="qry.sort == 3">
+            ORDER BY ti.like_num DESC
+        </if>
+    </select>
+    <select id="minePage" resultType="com.team_manage.controller.topic.vo.TopicInfoVO">
+        SELECT
+            ti.topic_id,
+            ti.topic_title,
+            ti.topic_time,
+            ti.topic_content,
+            ti.topic_img,
+            ti.user_id,
+            ti.topic_hot,
+            ti.collect_num,
+            ti.like_num,
+            su.user_name,
+            su.user_avatar,
+            IF( ci.collect_id IS NOT NULL, 1, 0 ) AS is_collect,
+            IF( li.like_id IS NOT NULL, 1, 0 ) AS is_like,
+            IFNULL( cif.comment_num, 0 ) AS comment_num
+        FROM
+        topic_info ti
+        LEFT JOIN sys_user su ON ti.user_id = su.user_id
+        LEFT JOIN ( SELECT collect_id, business_id FROM collect_info WHERE user_id = #{qry.userId} AND delete_flag = 0 ) ci ON ci.business_id = ti.topic_id
+        LEFT JOIN ( SELECT like_id, business_id FROM like_info WHERE user_id = #{qry.userId} AND delete_flag = 0 ) li ON li.business_id = ti.topic_id
+        LEFT JOIN ( SELECT topic_id, COUNT(*) AS comment_num FROM comment_info WHERE delete_flag = 0 GROUP BY topic_id) cif ON cif.topic_id = ti.topic_id
+        WHERE ti.delete_flag = 0 AND ti.user_id = #{qry.userId}
+        <if test="qry.keyWord != null and qry.keyWord != ''">
+            AND (ti.topic_title LIKE CONCAT('%',#{qry.keyWord},'%') OR ti.topic_content LIKE CONCAT('%',#{qry.keyWord},'%'))
+        </if>
+        <if test="qry.sort == 0">
+            ORDER BY ti.topic_hot DESC
+        </if>
+        <if test="qry.sort == null or qry.sort == 1">
+            ORDER BY ti.create_time DESC
+        </if>
+        <if test="qry.sort == 2">
+            ORDER BY ti.collect_num DESC
+        </if>
+        <if test="qry.sort == 3">
+            ORDER BY ti.like_num DESC
+        </if>
+    </select>
+    <select id="detailById" resultType="com.team_manage.controller.topic.vo.TopicInfoVO">
+        SELECT
+            ti.topic_id,
+            ti.topic_title,
+            ti.topic_time,
+            ti.topic_content,
+            ti.topic_img,
+            ti.user_id,
+            ti.topic_hot,
+            ti.collect_num,
+            ti.like_num,
+            su.user_name,
+            su.user_avatar,
+            IF( ci.collect_id IS NOT NULL, 1, 0 ) AS is_collect,
+            IF( li.like_id IS NOT NULL, 1, 0 ) AS is_like,
+            IFNULL( cif.comment_num, 0 ) AS comment_num
+        FROM
+            topic_info ti
+                LEFT JOIN sys_user su ON ti.user_id = su.user_id
+                LEFT JOIN ( SELECT collect_id, business_id FROM collect_info WHERE user_id = #{userId} AND delete_flag = 0 ) ci ON ci.business_id = ti.topic_id
+                LEFT JOIN ( SELECT like_id, business_id FROM like_info WHERE user_id = #{userId} AND delete_flag = 0 ) li ON li.business_id = ti.topic_id
+                LEFT JOIN ( SELECT topic_id, COUNT(*) AS comment_num FROM comment_info WHERE delete_flag = 0 GROUP BY topic_id) cif ON cif.topic_id = ti.topic_id
+        WHERE ti.delete_flag = 0 AND ti.topic_id = #{topicId}
+    </select>
+    <select id="webPage" resultType="com.team_manage.controller.topic.vo.TopicInfoVO">
+        SELECT
+        ti.topic_id,
+        ti.topic_title,
+        ti.topic_time,
+        ti.topic_content,
+        ti.topic_img,
+        ti.user_id,
+        ti.topic_hot,
+        ti.collect_num,
+        ti.like_num,
+        su.user_name,
+        su.user_avatar,
+        IF( ci.collect_id IS NOT NULL, 1, 0 ) AS is_collect,
+        IF( li.like_id IS NOT NULL, 1, 0 ) AS is_like,
+        IFNULL( cif.comment_num, 0 ) AS comment_num
+        FROM
+        topic_info ti
+        LEFT JOIN sys_user su ON ti.user_id = su.user_id
+        LEFT JOIN ( SELECT collect_id, business_id FROM collect_info WHERE user_id = #{qry.userId} AND delete_flag = 0 ) ci ON ci.business_id = ti.topic_id
+        LEFT JOIN ( SELECT like_id, business_id FROM like_info WHERE user_id = #{qry.userId} AND delete_flag = 0 ) li ON li.business_id = ti.topic_id
+        LEFT JOIN ( SELECT topic_id, COUNT(*) AS comment_num FROM comment_info WHERE delete_flag = 0 GROUP BY topic_id) cif ON cif.topic_id = ti.topic_id
+        WHERE ti.delete_flag = 0
+        <if test="qry.keyWord != null and qry.keyWord != ''">
+            AND (ti.topic_title LIKE CONCAT('%',#{qry.keyWord},'%') OR ti.topic_content LIKE CONCAT('%',#{qry.keyWord},'%'))
+        </if>
+        <if test="qry.sort == null or qry.sort == 0">
+            ORDER BY ti.topic_hot DESC
+        </if>
+        <if test="qry.sort == 1">
+            ORDER BY ti.create_time DESC
+        </if>
+        <if test="qry.sort == 2">
+            ORDER BY ti.collect_num DESC
+        </if>
+        <if test="qry.sort == 3">
+            ORDER BY ti.like_num DESC
+        </if>
+    </select>
+    <select id="userPage" resultType="com.team_manage.controller.topic.vo.TopicInfoVO">
+        SELECT
+        ti.topic_id,
+        ti.topic_title,
+        ti.topic_time,
+        ti.topic_content,
+        ti.topic_img,
+        ti.user_id,
+        ti.topic_hot,
+        ti.collect_num,
+        ti.like_num,
+        su.user_name,
+        su.user_avatar,
+        IF( ci.collect_id IS NOT NULL, 1, 0 ) AS is_collect,
+        IF( li.like_id IS NOT NULL, 1, 0 ) AS is_like,
+        IFNULL( cif.comment_num, 0 ) AS comment_num
+        FROM
+        topic_info ti
+        LEFT JOIN sys_user su ON ti.user_id = su.user_id
+        LEFT JOIN ( SELECT collect_id, business_id FROM collect_info WHERE user_id = #{qry.loginId} AND delete_flag = 0 ) ci ON ci.business_id = ti.topic_id
+        LEFT JOIN ( SELECT like_id, business_id FROM like_info WHERE user_id = #{qry.loginId} AND delete_flag = 0 ) li ON li.business_id = ti.topic_id
+        LEFT JOIN ( SELECT topic_id, COUNT(*) AS comment_num FROM comment_info WHERE delete_flag = 0 GROUP BY topic_id) cif ON cif.topic_id = ti.topic_id
+        WHERE ti.delete_flag = 0 AND ti.user_id = #{qry.userId}
+        ORDER BY ti.create_time DESC
+    </select>
+</mapper>

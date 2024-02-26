@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team_manage.mapper.SysUserMapper">
+
+    <select id="tranPlanInfoPageByQry" resultType="com.team_manage.controller.tranplaninfo.vo.TranPlanInfoVO">
+        SELECT
+            tpi.key_id,
+            tpi.plan_object,
+            tpi.player_id,
+            tpi.plan_date,
+            tpi.complete_flag
+        FROM
+            tran_plan_info tpi
+                LEFT JOIN player_info pi ON pi.key_id = tpi.player_id AND pi.delete_flag = 0
+        WHERE
+        tpi.delete_flag = 0
+        <if test="qry.userName != null and qry.userName != ''">
+            AND pi.user_name LIKE CONCAT('%' , #{qry.userName}, '%')
+        </if>
+        ORDER BY pi.create_name DESC
+    </select>
+</mapper>

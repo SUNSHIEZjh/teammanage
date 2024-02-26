@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team_manage.mapper.NodeRecommendMapper">
+
+    <select id="getListByNodeId" resultType="com.team_manage.controller.introduction.vo.WxNodeRecommendVO">
+        SELECT
+            nr.recommend_id,
+            nr.node_id,
+            nr.product_id,
+            fp.product_id,
+            fp.product_name,
+            fp.product_describe,
+            fp.product_img,
+            fp.facilities_id,
+            sf.facilities_name,
+            sf.facilities_img,
+            sf.facilities_type,
+            sf.facilities_longitude,
+            sf.facilities_dimension,
+            sf.facilities_status
+        FROM
+            node_recommend nr
+        LEFT JOIN featured_product fp ON nr.product_id = fp.product_id
+        LEFT JOIN surrounding_facilities sf ON fp.facilities_id = sf.facilities_id
+        WHERE nr.delete_flag = 0 AND nr.node_id = #{nodeId}
+    </select>
+</mapper>

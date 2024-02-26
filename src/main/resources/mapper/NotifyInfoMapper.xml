@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team_manage.mapper.NotifyInfoMapper">
+
+    <select id="pageByQry" resultType="com.team_manage.controller.topic.vo.NotifyInfoVO">
+        SELECT
+            ni.notify_id,
+            ni.notify_type,
+            ni.user_id,
+            ni.business_id,
+            ni.notify_time,
+            ni.notify_content,
+            ni.notify_status
+        FROM
+            notify_info ni
+        WHERE ni.delete_flag = 0 AND ni.user_id = #{qry.userId}
+        <if test="qry.notifyStatus != null and qry.notifyStatus != 0">
+            AND ni.notify_status = #{qry.notifyStatus}
+        </if>
+        ORDER BY ni.notify_id DESC
+    </select>
+</mapper>

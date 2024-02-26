@@ -1,0 +1,127 @@
+package com.team_manage.entity;
+
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
+
+import java.io.Serializable;
+import java.util.Date;
+
+/**
+ * <p>
+ * 用户表
+ * </p>
+ *
+ * @author XXX
+ * @since 2023-11-14
+ */
+@Data
+@EqualsAndHashCode(callSuper = false)
+@Accessors(chain = true)
+public class SysUser implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    /**
+     * 用户ID
+     */
+    @TableId
+    private Long userId;
+
+    /**
+     * 用户名称
+     */
+    private String userName;
+
+    /**
+     * 背景图
+     */
+    private String backGround;
+
+    /**
+     * 用户账号
+     */
+    private String userAccount;
+
+    /**
+     * 用户头像
+     */
+    private String userAvatar;
+
+    /**
+     * 手机号码
+     */
+    private String userPhone;
+
+    /**
+     * 出生日期
+     */
+    private Date userBirthday;
+
+    /**
+     * 性别 0、未知 1、男 2、女
+     */
+    private Integer userSex;
+
+    /**
+     * 用户密码
+     */
+    private String userPassword;
+
+    /**
+     * 加密盐
+     */
+    private String userSalt;
+
+    /**
+     * 最后登录时间
+     */
+    private Date lastLoginTime;
+
+    /**
+     * 删除标志，0未删除 1删除
+     */
+    @TableField(fill = FieldFill.INSERT)
+    private Integer deleteFlag;
+
+    /**
+     * 创建者ID
+     */
+    @TableField(fill = FieldFill.INSERT)
+    private Long createId;
+
+    /**
+     * 创建者名称
+     */
+    @TableField(fill = FieldFill.INSERT)
+    private String createName;
+
+    /**
+     * 创建时间
+     */
+    @TableField(fill = FieldFill.INSERT)
+    private Date createTime;
+
+    /**
+     * 修改者ID
+     */
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private Long updateId;
+
+    /**
+     * 修改者名称
+     */
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private String updateName;
+
+    /**
+     * 修改时间
+     */
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private Date updateTime;
+
+
+}

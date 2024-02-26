@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team_manage.mapper.OrderItemMapper">
+
+    <select id="itemList" resultType="com.team_manage.controller.order.vo.OrderItemVO">
+        SELECT
+            oit.item_id,
+            oit.order_id,
+            oit.ticket_id,
+            oit.person_id,
+            oit.item_num,
+            oit.item_total,
+            att.ticket_name,
+            att.ticket_price,
+            pi.person_name,
+            pi.person_card,
+            pi.person_phone
+        FROM
+            order_item oit
+                LEFT JOIN attractions_ticket att ON oit.ticket_id = att.ticket_id
+                LEFT JOIN person_info pi ON oit.person_id = pi.person_id
+        WHERE oit.delete_flag = 0 AND oit.order_id = #{orderId}
+    </select>
+</mapper>

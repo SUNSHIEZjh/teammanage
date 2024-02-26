@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team_manage.mapper.IntroductionNodeMapper">
+
+    <select id="pageByQry" resultType="com.team_manage.controller.introduction.vo.WxIntroductionNodeVO">
+        SELECT
+            ine.node_id,
+            ine.introduction_id,
+            ine.node_name,
+            ine.attractions_id,
+            ine.node_desc,
+            ine.node_sort,
+            ai.attractions_name,
+            ai.attractions_images,
+            ai.attractions_desc,
+            ai.attractions_grade,
+            ai.opening_status,
+            ai.opening_time,
+            ai.attractions_province,
+            ai.attractions_city,
+            ai.attractions_county,
+            ai.attractions_address,
+            ai.attractions_longitude,
+            ai.attractions_dimension,
+            ai.attractions_phone
+        FROM
+            introduction_node ine
+        LEFT JOIN attractions_info ai ON ine.attractions_id = ai.attractions_id
+        WHERE
+            ine.delete_flag = 0 AND ine.introduction_id = #{nodeQry.introductionId}
+        ORDER BY ine.node_sort ASC
+    </select>
+</mapper>

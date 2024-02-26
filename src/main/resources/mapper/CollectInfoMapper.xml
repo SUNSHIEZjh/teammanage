@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team_manage.mapper.CollectInfoMapper">
+
+    <select id="topicPage" resultType="com.team_manage.controller.topic.vo.CollectTopicVO">
+        SELECT
+            ci.collect_id,
+            ci.collect_type,
+            ci.business_id,
+            ci.collect_time,
+            ti.topic_id,
+            ti.topic_title,
+            ti.topic_content,
+            ti.topic_time,
+            ti.topic_img,
+            ti.user_id,
+            ti.topic_hot,
+            ti.collect_num,
+            ti.like_num,
+            su.user_name,
+            su.user_avatar,
+            IF( ci1.collect_id IS NOT NULL, 1, 0 ) AS is_collect,
+            IF( li.like_id IS NOT NULL, 1, 0 ) AS is_like,
+            IFNULL( cif.comment_num, 0 ) AS comment_num
+        FROM
+            collect_info ci
+            LEFT JOIN topic_info ti ON ci.business_id = ti.topic_id
+            LEFT JOIN ( SELECT collect_id, business_id FROM collect_info WHERE user_id = #{qry.userId} AND delete_flag = 0 ) ci1 ON ci1.business_id = ti.topic_id
+            LEFT JOIN ( SELECT like_id, business_id FROM like_info WHERE user_id = #{qry.userId} AND delete_flag = 0 ) li ON li.business_id = ti.topic_id
+            LEFT JOIN ( SELECT topic_id, COUNT(*) AS comment_num FROM comment_info WHERE delete_flag = 0 GROUP BY topic_id) cif ON cif.topic_id = ti.topic_id
+            LEFT JOIN sys_user su ON ti.user_id = su.user_id
+        WHERE ci.collect_type = 1 AND ci.delete_flag = 0 AND ci.user_id = #{qry.user}  AND ti.delete_flag = 0
+        <if test="qry.keyWord != null and qry.keyWord != ''">
+            AND (ti.topic_title LIKE CONCAT('%',#{qry.keyWord},'%') OR ti.topic_content LIKE CONCAT('%',#{qry.keyWord},'%'))
+        </if>
+    </select>
+    <select id="introductionPage" resultType="com.team_manage.controller.topic.vo.CollectIntroductionVO">
+        SELECT
+            ci.collect_id,
+            ci.collect_type,
+            ci.business_id,
+            ci.collect_time,
+            ii.introduction_id,
+            ii.introduction_name,
+            ii.introduction_img,
+            ii.introduction_time,
+            ii.user_id,
+            ii.introduction_desc,
+            ii.introduction_like,
+            ii.introduction_collect,
+            su.user_name,
+            su.user_avatar,
+            IF( ci1.collect_id IS NOT NULL, 1, 0 ) AS is_collect,
+            IF( li.like_id IS NOT NULL, 1, 0 ) AS is_like
+        FROM
+            collect_info ci
+        LEFT JOIN introduction_info ii ON ci.business_id = ii.introduction_id
+        LEFT JOIN sys_user su ON ii.user_id = su.user_id
+        LEFT JOIN ( SELECT collect_id, business_id FROM collect_info WHERE user_id = #{qry.userId} AND delete_flag = 0 ) ci1 ON ci1.business_id = ii.introduction_id
+        LEFT JOIN ( SELECT like_id, business_id FROM like_info WHERE user_id = #{qry.userId} AND delete_flag = 0 ) li ON li.business_id = ii.introduction_id
+        WHERE ci.collect_type = 2 AND ci.delete_flag = 0 AND ci.user_id = #{qry.user} AND ii.delete_flag = 0
+        <if test="qry.keyWord != null and qry.keyWord != ''">
+            AND (ii.introduction_name LIKE CONCAT('%',#{qry.keyWord},'%') OR ii.introduction_desc LIKE CONCAT('%',#{qry.keyWord},'%'))
+        </if>
+    </select>
+</mapper>

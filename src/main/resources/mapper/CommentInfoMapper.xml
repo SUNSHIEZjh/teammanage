@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team_manage.mapper.CommentInfoMapper">
+
+    <update id="setNum">
+        UPDATE comment_info
+        <set>
+            like_num = like_num
+            <if test="change == 1">
+                + #{num}
+            </if>
+            <if test="change == 2">
+                - #{num}
+            </if>
+        </set>
+        WHERE comment_id = #{commentId}
+    </update>
+    <select id="pageByTopic" resultType="com.team_manage.controller.topic.vo.CommentInfoVO">
+        SELECT
+            ci.comment_id,
+            ci.comment_parent,
+            ci.topic_id,
+            ci.comment_time,
+            ci.comment_content,
+            ci.comment_sort,
+            ci.like_num,
+            IF( li.like_id IS NOT NULL, 1, 0 ) AS is_like,
+            ci.user_id,
+            su.user_name,
+            su.user_avatar,
+            ci1.user_id AS be_user_id,
+            su1.user_name AS be_user_name,
+            su1.user_avatar AS be_user_avatar
+        FROM
+            comment_info ci
+                LEFT JOIN sys_user su ON ci.user_id = su.user_id
+                LEFT JOIN comment_info ci1 ON ci.comment_parent = ci1.comment_id AND ci1.delete_flag = 0
+                LEFT JOIN sys_user su1 ON ci1.user_id = su1.user_id
+                LEFT JOIN ( SELECT like_id, business_id FROM like_info WHERE user_id = #{qry.userId} AND delete_flag = 0 ) li ON li.business_id = ci.comment_id
+
+        WHERE ci.delete_flag = 0 AND ci.topic_id = #{qry.topicId}
+        <if test="type == 1">
+            AND ci.comment_parent = 0
+        </if>
+        <if test="type == 2">
+            AND ci.comment_parent != 0
+        </if>
+        ORDER BY ci.comment_id ASC
+    </select>
+    <select id="listByTopic" resultType="com.team_manage.controller.topic.vo.CommentInfoVO">
+        SELECT
+            ci.comment_id,
+            ci.comment_parent,
+            ci.topic_id,
+            ci.comment_time,
+            ci.comment_content,
+            ci.comment_sort,
+            ci.like_num,
+            IF( li.like_id IS NOT NULL, 1, 0 ) AS is_like,
+            ci.user_id,
+            su.user_name,
+            su.user_avatar,
+            ci1.user_id AS be_user_id,
+            su1.user_name AS be_user_name,
+            su1.user_avatar AS be_user_avatar
+        FROM
+            comment_info ci
+        LEFT JOIN sys_user su ON ci.user_id = su.user_id
+        LEFT JOIN comment_info ci1 ON ci.comment_parent = ci1.comment_id AND ci1.delete_flag = 0
+        LEFT JOIN sys_user su1 ON ci1.user_id = su1.user_id
+        LEFT JOIN ( SELECT like_id, business_id FROM like_info WHERE user_id = #{qry.userId} AND delete_flag = 0 ) li ON li.business_id = ci.comment_id
+
+        WHERE ci.delete_flag = 0 AND ci.topic_id = #{qry.topicId}
+        <if test="type == 1">
+            AND ci.comment_parent = 0
+        </if>
+        <if test="type == 2">
+            AND ci.comment_parent != 0
+        </if>
+        ORDER BY ci.comment_id ASC
+    </select>
+    <select id="commentById" resultType="com.team_manage.controller.topic.vo.CommentInfoVO">
+        SELECT
+            ci.comment_id,
+            ci.comment_parent,
+            ci.topic_id,
+            ci.comment_time,
+            ci.comment_content,
+            ci.comment_sort,
+            ci.like_num,
+            IF( li.like_id IS NOT NULL, 1, 0 ) AS is_like,
+            ci.user_id,
+            su.user_name,
+            su.user_avatar,
+            ci1.user_id AS be_user_id,
+            su1.user_name AS be_user_name,
+            su1.user_avatar AS be_user_avatar
+        FROM
+            comment_info ci
+                LEFT JOIN sys_user su ON ci.user_id = su.user_id
+                LEFT JOIN comment_info ci1 ON ci.comment_parent = ci1.comment_id AND ci1.delete_flag = 0
+                LEFT JOIN sys_user su1 ON ci1.user_id = su1.user_id
+                LEFT JOIN ( SELECT like_id, business_id FROM like_info WHERE user_id = #{userId} AND delete_flag = 0 ) li ON li.business_id = ci.comment_id
+        WHERE ci.delete_flag = 0 AND ci.comment_id = #{commentId}
+    </select>
+    <select id="countByTopicAndParent" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM comment_info WHERE topic_id = #{topicId}  AND comment_parent = #{commentParent}
+    </select>
+</mapper>
