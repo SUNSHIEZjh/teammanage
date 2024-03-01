@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.team_manage.mapper.SysUserMapper">
+<mapper namespace="com.team_manage.mapper.TranPlanInfoMapper">
 
     <select id="tranPlanInfoPageByQry" resultType="com.team_manage.controller.tranplaninfo.vo.TranPlanInfoVO">
         SELECT
@@ -17,6 +17,6 @@
         <if test="qry.userName != null and qry.userName != ''">
             AND pi.user_name LIKE CONCAT('%' , #{qry.userName}, '%')
         </if>
-        ORDER BY pi.create_name DESC
+        ORDER BY tpi.create_time DESC
     </select>
 </mapper>

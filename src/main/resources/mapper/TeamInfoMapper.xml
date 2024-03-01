@@ -13,6 +13,6 @@
         <if test="qry.teamName != null and qry.teamName != ''">
             AND ti.team_name LIKE CONCAT('%' , #{qry.teamName}, '%')
         </if>
-        ORDER BY ni.create_time DESC
+        ORDER BY ti.create_time DESC
     </select>
 </mapper>

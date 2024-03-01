@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.team_manage.mapper.SysUserMapper">
+<mapper namespace="com.team_manage.mapper.AttendanceInfoMapper">
 
     <select id="attendanceInfoPageByQry" resultType="com.team_manage.controller.attendanceinfo.vo.AttendanceInfoVO">
         SELECT
@@ -18,8 +18,11 @@
         <if test="qry.userName != null and qry.userName != ''">
             AND pi.user_name LIKE CONCAT('%' , #{qry.userName}, '%')
         </if>
-        <if test="qry.userName != null and qry.userName != ''">
-            AND ni.notice_title LIKE CONCAT('%' , #{qry.noticeTitle}, '%')
+        <if test="qry.selectYear != null and qry.selectYear != ''">
+            AND ni.attendance_year  = {qry.selectYear}
+        </if>
+        <if test="qry.selectMonth != null and qry.selectMonth != ''">
+            AND ni.attendance_month  = {qry.selectMonth}
         </if>
         ORDER BY ni.release_time DESC
     </select>

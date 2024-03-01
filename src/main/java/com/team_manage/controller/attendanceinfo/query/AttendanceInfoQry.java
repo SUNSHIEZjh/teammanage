@@ -25,8 +25,14 @@ public class AttendanceInfoQry extends BaseParam {
     /**
      * 公告标题
      */
-    @ApiModelProperty("公告标题")
+    @ApiModelProperty("球员名称")
     private String userName;
+
+    /**
+     * 查询月份
+     */
+    @ApiModelProperty("查询年份")
+    private Date selectYear;
 
     /**
      * 查询月份
