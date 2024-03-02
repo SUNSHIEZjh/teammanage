@@ -4,17 +4,17 @@
 
     <select id="attendanceInfoPageByQry" resultType="com.team_manage.controller.attendanceinfo.vo.AttendanceInfoVO">
         SELECT
-            ai.player_id,
-            ai.attendance_year,
-            ai.attendance_month,
-            ai.sick_leave_day,
-            ai.absenteeism_day,
-            ai.personal_leave_day
+        ai.player_id,
+        ai.attendance_year,
+        ai.attendance_month,
+        sum(ai.sick_leave_day) as sick_leave_day,
+        sum(ai.absenteeism_day) as absenteeism_day,
+        sum(ai.personal_leave_day) as personal_leave_day,
+        pi.player_name
         FROM
-        attendance_info ai
-        LEFT JOIN player_info pi ON pi.key_id = tpi.player_id AND pi.delete_flag = 0
-        WHERE
-        ni.delete_flag = 0
+        attendance_info  ai
+
+        ai.delete_flag = 0
         <if test="qry.userName != null and qry.userName != ''">
             AND pi.user_name LIKE CONCAT('%' , #{qry.userName}, '%')
         </if>
@@ -24,6 +24,7 @@
         <if test="qry.selectMonth != null and qry.selectMonth != ''">
             AND ni.attendance_month  = {qry.selectMonth}
         </if>
-        ORDER BY ni.release_time DESC
+        GROUP BY ai.player_id
+        ORDER BY ai.attendance_year,ai.attendance_month DESC
     </select>
 </mapper>

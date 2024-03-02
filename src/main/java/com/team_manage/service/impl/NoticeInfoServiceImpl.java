@@ -7,23 +7,16 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.team_manage.controller.noticeinfo.dto.NoticeInfoDTO;
 import com.team_manage.controller.noticeinfo.query.NoticeInfoQry;
 import com.team_manage.controller.noticeinfo.vo.NoticeInfoVO;
-import com.team_manage.controller.tranplaninfo.dto.TranPlanInfoDTO;
-import com.team_manage.controller.tranplaninfo.query.TranPlanInfoQry;
-import com.team_manage.controller.tranplaninfo.vo.TranPlanInfoVO;
 import com.team_manage.entity.NoticeInfo;
-import com.team_manage.entity.TranPlanInfo;
 import com.team_manage.mapper.NoticeInfoMapper;
-import com.team_manage.mapper.TranPlanInfoMapper;
 import com.team_manage.service.NoticeInfoService;
-import com.team_manage.service.TranPlanInfoService;
 import com.team_manage.utils.CopyUtils;
-import com.team_manage.utils.RedisUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 /**
  * <p>
- * 用户表 服务实现类
+ * 公告信息 服务实现类
  * </p>
  *
  * @author XXX
@@ -34,13 +27,7 @@ import org.springframework.stereotype.Service;
 public class NoticeInfoServiceImpl extends ServiceImpl<NoticeInfoMapper, NoticeInfo> implements NoticeInfoService {
 
     /**
-     * Redis工具
-     */
-    private final RedisUtil redisUtil;
-
-
-    /**
-     * 修改用户信息
+     * 修改公告信息信息
      *
      * @param noticeInfoDTO 用户DTO
      * @return Boolean
@@ -61,10 +48,10 @@ public class NoticeInfoServiceImpl extends ServiceImpl<NoticeInfoMapper, NoticeI
 
 
     /**
-     * 用户信息分页查询
+     * 公告信息分页查询
      *
      * @param qry 查询Qry
-     * @return WebUserVO
+     * @return NoticeInfoVO
      */
     @Override
     public IPage<NoticeInfoVO> pageByQry(NoticeInfoQry qry) {
@@ -74,9 +61,9 @@ public class NoticeInfoServiceImpl extends ServiceImpl<NoticeInfoMapper, NoticeI
 
 
     /**
-     * 删除用户信息
+     * 删除公告信息信息
      *
-     * @param noticeId 用户ID
+     * @param noticeId 公告信息ID
      * @return Boolean
      */
     @Override
@@ -86,10 +73,10 @@ public class NoticeInfoServiceImpl extends ServiceImpl<NoticeInfoMapper, NoticeI
     }
 
     /**
-     * 修改用户信息
+     * 修改公告信息信息
      *
-     * @param noticeId  用户ID
-     * @param noticeInfoDTO 用户DTO
+     * @param noticeId      公告信息ID
+     * @param noticeInfoDTO 公告信息DTO
      * @return Boolean
      */
     @Override
@@ -101,9 +88,9 @@ public class NoticeInfoServiceImpl extends ServiceImpl<NoticeInfoMapper, NoticeI
     }
 
     /**
-     * 新增用户信息
+     * 新增公告信息信息
      *
-     * @param noticeInfoDTO 用户DTO
+     * @param noticeInfoDTO 公告信息DTO
      * @return Boolean
      */
     @Override
@@ -116,10 +103,10 @@ public class NoticeInfoServiceImpl extends ServiceImpl<NoticeInfoMapper, NoticeI
     }
 
     /**
-     * 用户信息详情
+     * 公告信息信息详情
      *
-     * @param noticeId 用户ID
-     * @return WebUserVO
+     * @param noticeId 公告信息ID
+     * @return NoticeInfoVO
      */
     @Override
     public NoticeInfoVO detail(Long noticeId) {

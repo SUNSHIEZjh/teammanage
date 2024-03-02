@@ -5,15 +5,13 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.team_manage.controller.playscore.dto.PlayerScoreRecordDTO;
 import com.team_manage.controller.playscore.query.PlayerScoreRecordQry;
 import com.team_manage.controller.playscore.vo.PlayerScoreRecordVO;
-import com.team_manage.controller.teaminfo.dto.TeamInfoDTO;
-import com.team_manage.controller.teaminfo.query.TeamInfoQry;
-import com.team_manage.controller.teaminfo.vo.TeamInfoVO;
 import com.team_manage.entity.PlayerScoreRecord;
-import com.team_manage.entity.TeamInfo;
+
+import java.util.List;
 
 /**
  * <p>
- * 用户表 服务类
+ * 技术得分表 服务类
  * </p>
  *
  * @author XXX
@@ -23,16 +21,7 @@ public interface PlayScoreRecordService extends IService<PlayerScoreRecord> {
 
 
     /**
-     * 修改用户信息
-     *
-     * @param playerScoreRecordDTO 用户DTO
-     * @return Boolean
-     */
-    Boolean edit(PlayerScoreRecordDTO playerScoreRecordDTO);
-
-
-    /**
-     * 用户信息分页查询
+     * 技术得分信息分页查询
      *
      * @param qry 查询Qry
      * @return WebUserVO
@@ -41,35 +30,43 @@ public interface PlayScoreRecordService extends IService<PlayerScoreRecord> {
 
 
     /**
-     * 删除用户信息
+     * 删除技术得分信息
      *
-     * @param playerScoreId 用户ID
+     * @param playerScoreId 技术得分ID
      * @return Boolean
      */
     Boolean del(Long playerScoreId);
 
     /**
-     * 修改用户信息
+     * 修改技术得分信息
      *
-     * @param playerScoreId      用户ID
-     * @param playerScoreRecordDTO 用户DTO
+     * @param playerScoreId        技术得分ID
+     * @param playerScoreRecordDTO 技术得分DTO
      * @return Boolean
      */
     Boolean webEdit(Long playerScoreId, PlayerScoreRecordDTO playerScoreRecordDTO);
 
     /**
-     * 新增用户信息
+     * 新增技术得分信息
      *
-     * @param playerScoreRecordDTO 用户DTO
+     * @param playerScoreRecordDTO 技术得分DTO
      * @return Boolean
      */
     Boolean add(PlayerScoreRecordDTO playerScoreRecordDTO);
 
     /**
-     * 用户信息详情
+     * 技术得分信息详情
      *
-     * @param playerScoreId 用户ID
+     * @param playerScoreId 技术得分ID
      * @return WebUserVO
      */
     PlayerScoreRecordVO detail(Long playerScoreId);
+
+    /**
+     * 球员得分明细
+     *
+     * @param playerId 球员ID
+     * @return
+     */
+    List<PlayerScoreRecordVO> detailList(Long playerId);
 }

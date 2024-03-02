@@ -85,6 +85,11 @@ public class PlayerInfo implements Serializable {
      */
     private Integer weight;
 
+    /**
+     * 账号
+     */
+    private String account;;
+
 
     /**
      * 删除标志，0未删除 1删除

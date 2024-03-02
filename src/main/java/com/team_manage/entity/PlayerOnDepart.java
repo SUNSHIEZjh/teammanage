@@ -49,6 +49,11 @@ public class PlayerOnDepart implements Serializable {
      */
     private Date onDate;
 
+    /**
+     * 离职日期
+     */
+    private Date departDate;
+
 
     /**
      * 性别
@@ -66,6 +71,11 @@ public class PlayerOnDepart implements Serializable {
      * 离职原因
      */
     private String departReson;
+
+    /**
+     * 是否在职： 0 -否 1-是'
+     */
+    private String onDepartFlag;
 
 
     /**

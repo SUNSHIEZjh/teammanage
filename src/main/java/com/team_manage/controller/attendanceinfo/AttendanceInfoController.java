@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
  * <p>
@@ -38,11 +39,11 @@ public class AttendanceInfoController {
         return Result.success(attendanceInfoService.pageByQry(qry));
     }
 
-    @ApiOperation("考勤管理详情")
-    @GetMapping("/detail/{attendanceId}")
+    @ApiOperation("考勤管理明细")
+    @GetMapping("/detail/{playerId}")
 //    @SaCheckPermission("web:user:detail")
-    public Result<AttendanceInfoVO> detail(@PathVariable @NotNull(message = "训练计划ID") Long attendanceId) {
-        return Result.success(attendanceInfoService.detail(attendanceId));
+    public Result<List<AttendanceInfoVO>> detail(@PathVariable @NotNull(message = "球员ID") Long playerId) {
+        return Result.success(attendanceInfoService.detail(playerId));
     }
 
     @ApiOperation("新增考勤管理信息")
@@ -51,7 +52,7 @@ public class AttendanceInfoController {
     public Result<Boolean> add(@RequestBody @Valid AttendanceInfoDTO attendanceInfoDTO) {
         return Result.success(attendanceInfoService.add(attendanceInfoDTO));
     }
-
+/*
     @ApiOperation("编辑考勤管理")
     @PostMapping("/edit/{attendanceId}")
 //    @SaCheckPermission("web:user:edit")
@@ -65,6 +66,6 @@ public class AttendanceInfoController {
 //    @SaCheckPermission("web:user:del")
     public Result<Boolean> del(@PathVariable @NotNull(message = "用户ID") Long attendanceId) {
         return Result.success(attendanceInfoService.del(attendanceId));
-    }
+    }*/
 }
 

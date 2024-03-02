@@ -10,7 +10,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 成都思致科技有限公司
+ *
  *
  * @author zjh
  * @version V1.0
@@ -79,6 +79,38 @@ public class PlayerInfoDTO implements Serializable {
      */
     @ApiModelProperty(value = "体重")
     private Integer weight;
+    /**
+     * 账号
+     */
+    @ApiModelProperty(value = "账号")
+    private String account;
+
+
+    /**
+     * 籍贯
+     */
+    @ApiModelProperty(value = "籍贯")
+    private String nativePlace;
+    /**
+     * 入职日期
+     */
+    @ApiModelProperty(value = "入职日期")
+    private Date onDate;
+    /**
+     * 离开日期
+     */
+    @ApiModelProperty("离开日期")
+    private Date departDate;
+    /**
+     * 位置
+     */
+    @ApiModelProperty(value = "位置")
+    private String plaryLocation;
+    /**
+     * 离职原因
+     */
+    @ApiModelProperty(value = "离职原因")
+    private String departReson;
     /**
      * 删除标志，0未删除 1删除
      */

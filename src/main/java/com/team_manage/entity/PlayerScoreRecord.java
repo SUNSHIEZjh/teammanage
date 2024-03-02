@@ -45,31 +45,31 @@ public class PlayerScoreRecord implements Serializable {
 
 
     /**
-     * 球衣号
+     * 得分
      */
     private Integer score;
 
 
     /**
-     * 性别
+     * 助攻
      */
     private Integer assistingScore;
 
 
     /**
-     * 年龄
+     * 盖帽
      */
     private Integer blockShotScore;
 
 
     /**
-     * 身高
+     * 篮板
      */
     private Integer backboardScore;
 
 
     /**
-     * 体重
+     * 抢断
      */
     private Integer tackleScore;
 

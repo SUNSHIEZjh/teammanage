@@ -9,7 +9,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 训练计划查询对象
+ * 公告信息查询对象
  * </p>
  */
 @Data

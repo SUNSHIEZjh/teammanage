@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team_manage.mapper.PlayerScoreRecordInfoMapper">
+
+    <select id="scoreRecordPageByQry" resultType="com.team_manage.controller.playscore.vo.PlayerScoreRecordVO">
+        SELECT
+        psr.key_id,
+        psr.player_id,
+        pi.player_name,
+        psr.match_id,
+        sum(psr.score) as score,
+        sum(psr.assisting_score) as assisting_score,
+        sum(psr.block_shot_score) as block_shot_score,
+        sum(psr.backboard_score) as backboard_score,
+        sum(psr.tackle_score) as tackle_score
+        FROM
+        player_score_record psr
+        LEFT JOIN player_info pi ON pi.key_id = psr.player_id
+        where
+        psr.delete_flag = 0
+        and pi.delete_flag = 0
+        <if test="qry.playerName != null and qry.playerName != ''">
+            AND pi.player_name LIKE CONCAT('%' , #{playerName}, '%')
+        </if>
+        group  by psr.player_id
+        ORDER BY pi.create_time DESC
+    </select>
+</mapper>

@@ -73,5 +73,12 @@ public class TranPlanInfoController {
     public Result<Boolean> del(@PathVariable @NotNull(message = "用户ID") Long tranPlanId) {
         return Result.success(tranPlanInfoService.del(tranPlanId));
     }
+
+    @ApiOperation("完成训练计划")
+    @PostMapping("/complete/{tranPlanId}")
+//    @SaCheckPermission("web:user:edit")
+    public Result<Boolean> complete(@PathVariable @NotNull(message = "用户ID") Long tranPlanId) {
+        return Result.success(tranPlanInfoService.complete(tranPlanId));
+    }
 }
 

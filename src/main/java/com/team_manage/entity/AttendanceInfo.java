@@ -38,6 +38,11 @@ public class AttendanceInfo {
 
 
     /**
+     * 考勤年份
+     */
+    private Integer attendanceYear;
+
+    /**
      * 考勤月份
      */
     private Integer attendanceMonth;

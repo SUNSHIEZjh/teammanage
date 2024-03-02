@@ -4,6 +4,7 @@ package com.team_manage.controller.playerinfo;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.team_manage.common.Result;
 import com.team_manage.controller.playerinfo.dto.PlayerInfoDTO;
+import com.team_manage.controller.playerinfo.dto.PlayerOnDepartDTO;
 import com.team_manage.controller.playerinfo.query.PlayerInfoQry;
 import com.team_manage.controller.playerinfo.vo.PlayerInfoVO;
 import com.team_manage.service.AttendanceInfoService;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
  * <p>
@@ -34,7 +36,6 @@ public class PlayerInfoController {
 
     @ApiOperation("球员管理分页查询")
     @PostMapping("/page")
-
     public Result<IPage<PlayerInfoVO>> page(@RequestBody @Valid PlayerInfoQry qry) {
         return Result.success(playerInfoService.pageByQry(qry));
     }
@@ -67,5 +68,18 @@ public class PlayerInfoController {
     public Result<Boolean> del(@PathVariable @NotNull(message = "用户ID") Long playerId) {
         return Result.success(playerInfoService.del(playerId));
     }
+
+    @ApiOperation("人员离职")
+    @PostMapping("/depart/{playerId}")
+//    @SaCheckPermission("web:user:del")
+    public Result<Boolean> depart(@PathVariable @NotNull(message = "用户ID") Long playerId,  @RequestBody @Valid PlayerOnDepartDTO playerOnDepartDTO) {
+        return Result.success(playerInfoService.depart(playerId,playerOnDepartDTO));
+    }
+    @ApiOperation("球员管理分页查询")
+    @PostMapping("/list")
+    public Result<List<PlayerInfoVO>> list() {
+        return Result.success(playerInfoService.getList());
+    }
+
 }
 

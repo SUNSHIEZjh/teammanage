@@ -9,7 +9,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 训练计划查询对象
+ * 技术得分查询对象
  * </p>
  */
 @Data
@@ -21,9 +21,9 @@ public class PlayerScoreRecordQry extends BaseParam {
     private static final long serialVersionUID = 1L;
 
     /**
-     * 公告标题
+     * 球员名称
      */
-    @ApiModelProperty("球队名称")
-    private String teamName;
+    @ApiModelProperty("球员名称")
+    private String playerName;
 
 }

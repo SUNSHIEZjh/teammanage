@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
  * <p>
@@ -37,11 +38,11 @@ public class PlayScoreRecordController {
         return Result.success(playScoreRecordService.pageByQry(qry));
     }
 
-    @ApiOperation("球队信息详情")
-    @GetMapping("/detail/{playerId}")
+    @ApiOperation("球队得分详情")
+    @GetMapping("/detail/{playerScoreId}")
 //    @SaCheckPermission("web:user:detail")
-    public Result<PlayerScoreRecordVO> detail(@PathVariable @NotNull(message = "球员ID") Long playerId) {
-        return Result.success(playScoreRecordService.detail(playerId));
+    public Result<PlayerScoreRecordVO> detail(@PathVariable @NotNull(message = "球员得分ID") Long playerScoreId) {
+        return Result.success(playScoreRecordService.detail(playerScoreId));
     }
 
     @ApiOperation("新增球员技术信息")
@@ -52,18 +53,24 @@ public class PlayScoreRecordController {
     }
 
     @ApiOperation("修改球员技术得分信息")
-    @PostMapping("/edit/{playerId}")
+    @PostMapping("/edit/{playerScoreId}")
 //    @SaCheckPermission("web:user:edit")
-    public Result<Boolean> edit(@PathVariable @NotNull(message = "用户ID") Long playerId,
+    public Result<Boolean> edit(@PathVariable @NotNull(message = "技术得分ID") Long playerScoreId,
                                 @RequestBody @Valid PlayerScoreRecordDTO playerScoreRecordDTO) {
-        return Result.success(playScoreRecordService.webEdit(playerId, playerScoreRecordDTO));
+        return Result.success(playScoreRecordService.webEdit(playerScoreId, playerScoreRecordDTO));
     }
 
     @ApiOperation("删除球员技术得分信息")
-    @PostMapping("/del/{playerId}")
+    @PostMapping("/del/{playerScoreId}")
 //    @SaCheckPermission("web:user:del")
-    public Result<Boolean> del(@PathVariable @NotNull(message = "用户ID") Long playerId) {
-        return Result.success(playScoreRecordService.del(playerId));
+    public Result<Boolean> del(@PathVariable @NotNull(message = "技术得分ID") Long playerScoreId) {
+        return Result.success(playScoreRecordService.del(playerScoreId));
+    }
+
+    @ApiOperation("球员技术得分分页查询")
+    @PostMapping("/detail/list/{playerId}")
+    public Result<List<PlayerScoreRecordVO>> detailList(@PathVariable @NotNull(message = "球员ID") Long playerId) {
+        return Result.success(playScoreRecordService.detailList(playerId));
     }
 }
 

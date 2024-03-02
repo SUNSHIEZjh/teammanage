@@ -33,7 +33,6 @@ public class MatchInfoController {
 
     @ApiOperation("赛事信息分页查询")
     @PostMapping("/page")
-
     public Result<IPage<MatchInfoVO>> page(@RequestBody @Valid MatchInfoQry qry) {
         return Result.success(matchInfoService.pageByQry(qry));
     }

@@ -40,6 +40,11 @@ public class TeamPlayerInfo implements Serializable {
 
 
     /**
+     * 球员ID
+     */
+    private Long teamId;
+
+    /**
      * 年份
      */
     private Integer teamYear;

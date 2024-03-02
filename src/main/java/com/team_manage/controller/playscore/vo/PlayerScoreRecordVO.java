@@ -36,34 +36,39 @@ public class PlayerScoreRecordVO implements Serializable {
     @ApiModelProperty("球员ID")
     private String playerId;
     /**
+     * 球员ID
+     */
+    @ApiModelProperty("球员名称")
+    private String playerName;
+    /**
      * 赛事
      */
     @ApiModelProperty("赛事")
     private String matchId;
     /**
-     * 球衣号
+     * 得分
      */
-    @ApiModelProperty("球衣号")
+    @ApiModelProperty("得分")
     private Integer score;
     /**
-     * 性别
+     * 助攻
      */
-    @ApiModelProperty("性别")
+    @ApiModelProperty("助攻")
     private Integer assistingScore;
     /**
-     * 年龄
+     * 盖帽
      */
-    @ApiModelProperty("年龄")
+    @ApiModelProperty("盖帽")
     private Integer blockShotScore;
     /**
-     * 身高
+     * 篮板
      */
-    @ApiModelProperty("身高")
+    @ApiModelProperty("篮板")
     private Integer backboardScore;
     /**
-     * 体重
+     * 抢断
      */
-    @ApiModelProperty("体重")
+    @ApiModelProperty("抢断")
     private Integer tackleScore;
     /**
      * 删除标志，0未删除 1删除

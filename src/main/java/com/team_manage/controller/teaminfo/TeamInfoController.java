@@ -4,8 +4,10 @@ package com.team_manage.controller.teaminfo;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.team_manage.common.Result;
 import com.team_manage.controller.teaminfo.dto.TeamInfoDTO;
+import com.team_manage.controller.teaminfo.dto.TeamPlayerInfoDTO;
 import com.team_manage.controller.teaminfo.query.TeamInfoQry;
 import com.team_manage.controller.teaminfo.vo.TeamInfoVO;
+import com.team_manage.controller.teaminfo.vo.TeamPlayerInfoVO;
 import com.team_manage.service.TeamInfoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
  * <p>
@@ -65,5 +68,41 @@ public class TeamInfoController {
     public Result<Boolean> del(@PathVariable @NotNull(message = "用户ID") Long teamId) {
         return Result.success(teamInfoService.del(teamId));
     }
+
+    @ApiOperation("球队球员列表查询")
+    @PostMapping("/user/{teamId}")
+    public Result<List<TeamPlayerInfoVO>> teamPlayerList(@PathVariable @Valid Long teamId) {
+        return Result.success(teamInfoService.teamPlayerList(teamId));
+    }
+
+    /**
+     * 添加球员
+     * @param teamId 球队ID
+     * @param teamPlayerInfoDTO 球队球员信息
+     * @return 成功/失败
+     */
+    @ApiOperation("球队球员新增")
+    @PostMapping("/user/add/{teamId}")
+    public Result<Boolean> teamPlayerAdd(@PathVariable @Valid Long teamId, @RequestBody @Valid TeamPlayerInfoDTO teamPlayerInfoDTO) {
+        return Result.success(teamInfoService.teamPlayerAdd(teamId, teamPlayerInfoDTO));
+    }
+
+    /**
+     * 移除球员
+     * @param teamPlayerId 球队球员信息ID
+     * @return   成功/失败
+     */
+    @ApiOperation("球队球员移除")
+    @PostMapping("/user/remove/{teamPlayerId}")
+    public Result<Boolean> teamPlayerRemove(@PathVariable @Valid Long teamPlayerId) {
+        return Result.success(teamInfoService.teamPlayerRemove(teamPlayerId));
+    }
+
+    @ApiOperation("球队列表查询")
+    @PostMapping("/list")
+    public Result<List<TeamInfoVO>> teamPlayerList() {
+        return Result.success(teamInfoService.teamList());
+    }
+
 }
 

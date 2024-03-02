@@ -4,13 +4,12 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.team_manage.controller.noticeinfo.query.NoticeInfoQry;
 import com.team_manage.controller.noticeinfo.vo.NoticeInfoVO;
-import com.team_manage.controller.tranplaninfo.query.TranPlanInfoQry;
 import com.team_manage.entity.NoticeInfo;
 import org.apache.ibatis.annotations.Param;
 
 /**
  * <p>
- * 用户表 Mapper 接口
+ * 公告信息表 Mapper 接口
  * </p>
  *
  * @author XXX
@@ -19,11 +18,11 @@ import org.apache.ibatis.annotations.Param;
 public interface NoticeInfoMapper extends BaseMapper<NoticeInfo> {
 
     /**
-     * 用户信息分页查询
+     * 公告信息信息分页查询
      *
      * @param qry   查询Qry
      * @param pages 分页类
-     * @return WebUserVO
+     * @return NoticeInfoVO
      */
     IPage<NoticeInfoVO> noticeInfoPageByQry(@Param("qry") NoticeInfoQry qry, @Param("pages") IPage<NoticeInfoVO> pages);
 

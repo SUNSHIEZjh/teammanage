@@ -11,13 +11,13 @@ import java.util.Date;
 
 /**
  * <p>
- * 训练计划查询对象
+ * 球员查询对象
  * </p>
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value = "考勤信息Qry")
+@ApiModel(value = "考球员查询Qry")
 public class PlayerInfoQry extends BaseParam {
 
     private static final long serialVersionUID = 1L;
@@ -25,19 +25,13 @@ public class PlayerInfoQry extends BaseParam {
     /**
      * 公告标题
      */
-    @ApiModelProperty("球员名称")
+    @ApiModelProperty("姓名")
     private String userName;
 
     /**
      * 查询月份
      */
-    @ApiModelProperty("查询年份")
-    private Date selectYear;
-
-    /**
-     * 查询月份
-     */
-    @ApiModelProperty("查询月份")
-    private Date selectMonth;
+    @ApiModelProperty("球队名称")
+    private Date teamName;
 
 }

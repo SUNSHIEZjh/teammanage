@@ -24,7 +24,7 @@ public interface PlayerInfoMapper extends BaseMapper<PlayerInfo> {
      * @param pages 分页类
      * @return WebUserVO
      */
-    IPage<PlayerInfoVO> attendanceInfoPageByQry(@Param("qry") PlayerInfoQry qry, @Param("pages") IPage<PlayerInfoVO> pages);
+    IPage<PlayerInfoVO> playerInfoPageByQry(@Param("qry") PlayerInfoQry qry, @Param("pages") IPage<PlayerInfoVO> pages);
 
 
 }

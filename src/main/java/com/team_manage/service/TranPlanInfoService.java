@@ -17,29 +17,19 @@ import com.team_manage.entity.TranPlanInfo;
  */
 public interface TranPlanInfoService extends IService<TranPlanInfo> {
 
-
     /**
-     * 修改用户信息
-     *
-     * @param tranPlanInfoDTO 用户DTO
-     * @return Boolean
-     */
-    Boolean edit(TranPlanInfoDTO tranPlanInfoDTO);
-
-
-    /**
-     * 用户信息分页查询
+     * 练计划信息分页查询
      *
      * @param qry 查询Qry
-     * @return WebUserVO
+     * @return TranPlanInfoVO
      */
     IPage<TranPlanInfoVO> pageByQry(TranPlanInfoQry qry);
 
 
     /**
-     * 删除用户信息
+     * 删除练计划信息
      *
-     * @param userId 用户ID
+     * @param userId 练计划ID
      * @return Boolean
      */
     Boolean del(Long userId);
@@ -54,18 +44,26 @@ public interface TranPlanInfoService extends IService<TranPlanInfo> {
     Boolean webEdit(Long tranPlanID, TranPlanInfoDTO tranPlanInfoDTO);
 
     /**
-     * 新增用户信息
+     * 新增练计划信息
      *
-     * @param tranPlanInfoDTO 用户DTO
+     * @param tranPlanInfoDTO 练计划DTO
      * @return Boolean
      */
     Boolean add(TranPlanInfoDTO tranPlanInfoDTO);
 
     /**
-     * 用户信息详情
+     * 练计划信息详情
      *
-     * @param tranPlanID 用户ID
-     * @return WebUserVO
+     * @param tranPlanID 练计划ID
+     * @return TranPlanInfoVO
      */
     TranPlanInfoVO detail(Long tranPlanID);
+
+    /**
+     * 完成训练计划
+     *
+     * @param tranPlanID 训练计划ID
+     * @return Boolean
+     */
+    Boolean complete(Long tranPlanID);
 }

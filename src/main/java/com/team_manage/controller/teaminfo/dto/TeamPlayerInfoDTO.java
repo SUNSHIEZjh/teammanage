@@ -10,7 +10,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 成都思致科技有限公司
+ *
  *
  * @author zjh
  * @version V1.0
@@ -39,6 +39,12 @@ public class TeamPlayerInfoDTO implements Serializable {
      */
     @ApiModelProperty(value = "球员ID")
     private Long playerId;
+
+    /**
+     * 球队ID
+     */
+    @ApiModelProperty(value = "球队ID")
+    private Long teamId;
     /**
      * 年份
      */

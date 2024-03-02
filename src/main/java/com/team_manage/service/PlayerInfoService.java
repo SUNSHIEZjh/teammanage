@@ -2,13 +2,13 @@ package com.team_manage.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.team_manage.controller.attendanceinfo.dto.AttendanceInfoDTO;
-import com.team_manage.controller.attendanceinfo.query.AttendanceInfoQry;
-import com.team_manage.controller.attendanceinfo.vo.AttendanceInfoVO;
 import com.team_manage.controller.playerinfo.dto.PlayerInfoDTO;
+import com.team_manage.controller.playerinfo.dto.PlayerOnDepartDTO;
 import com.team_manage.controller.playerinfo.query.PlayerInfoQry;
 import com.team_manage.controller.playerinfo.vo.PlayerInfoVO;
 import com.team_manage.entity.PlayerInfo;
+
+import java.util.List;
 
 /**
  * <p>
@@ -19,15 +19,6 @@ import com.team_manage.entity.PlayerInfo;
  * @since 2023-11-09
  */
 public interface PlayerInfoService extends IService<PlayerInfo> {
-
-
-    /**
-     * 修改用户信息
-     *
-     * @param playerInfoDTO 用户DTO
-     * @return Boolean
-     */
-    Boolean edit(PlayerInfoDTO playerInfoDTO);
 
 
     /**
@@ -46,6 +37,16 @@ public interface PlayerInfoService extends IService<PlayerInfo> {
      * @return Boolean
      */
     Boolean del(Long playerId);
+
+
+    /**
+     * 删除用户信息
+     *
+     * @param playerId 用户ID
+     * @return Boolean
+     */
+    Boolean depart(Long playerId, PlayerOnDepartDTO playerOnDepartDTO);
+
 
     /**
      * 修改用户信息
@@ -71,4 +72,10 @@ public interface PlayerInfoService extends IService<PlayerInfo> {
      * @return WebUserVO
      */
     PlayerInfoVO detail(Long playerId);
+
+    /**
+     * 用户下来
+     * @return PlayerInfo
+     */
+    List<PlayerInfoVO> getList();
 }

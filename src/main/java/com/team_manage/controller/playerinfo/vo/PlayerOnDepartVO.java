@@ -46,6 +46,11 @@ public class PlayerOnDepartVO implements Serializable {
     @ApiModelProperty("入职日期")
     private Date onDate;
     /**
+     * 离开日期
+     */
+    @ApiModelProperty("离开日期")
+    private Date departDate;
+    /**
      * 性别
      */
     @ApiModelProperty("性别")
@@ -55,6 +60,13 @@ public class PlayerOnDepartVO implements Serializable {
      */
     @ApiModelProperty("位置")
     private String plaryLocation;
+
+
+    /**
+     * 是否在职： 0 -否 1-是
+     */
+    @ApiModelProperty("是否在职： 0 -否 1-是")
+    private String onDepartFlag;
     /**
      * 离职原因
      */

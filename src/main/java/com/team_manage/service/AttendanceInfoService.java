@@ -7,9 +7,11 @@ import com.team_manage.controller.attendanceinfo.query.AttendanceInfoQry;
 import com.team_manage.controller.attendanceinfo.vo.AttendanceInfoVO;
 import com.team_manage.entity.AttendanceInfo;
 
+import java.util.List;
+
 /**
  * <p>
- * 用户表 服务类
+ * 考勤 服务类
  * </p>
  *
  * @author XXX
@@ -19,7 +21,7 @@ public interface AttendanceInfoService extends IService<AttendanceInfo> {
 
 
     /**
-     * 修改用户信息
+     * 修改考勤信息
      *
      * @param attendanceInfoDTO 用户DTO
      * @return Boolean
@@ -28,7 +30,7 @@ public interface AttendanceInfoService extends IService<AttendanceInfo> {
 
 
     /**
-     * 用户信息分页查询
+     * 考勤汇总信息分页查询
      *
      * @param qry 查询Qry
      * @return WebUserVO
@@ -37,7 +39,7 @@ public interface AttendanceInfoService extends IService<AttendanceInfo> {
 
 
     /**
-     * 删除用户信息
+     * 删除考勤信息
      *
      * @param attendanceId 用户ID
      * @return Boolean
@@ -45,7 +47,7 @@ public interface AttendanceInfoService extends IService<AttendanceInfo> {
     Boolean del(Long attendanceId);
 
     /**
-     * 修改用户信息
+     * 修改考勤信息
      *
      * @param attendanceId      用户ID
      * @param attendanceInfoDTO 用户DTO
@@ -54,7 +56,7 @@ public interface AttendanceInfoService extends IService<AttendanceInfo> {
     Boolean webEdit(Long attendanceId, AttendanceInfoDTO attendanceInfoDTO);
 
     /**
-     * 新增用户信息
+     * 新增考勤信息
      *
      * @param attendanceInfoDTO 用户DTO
      * @return Boolean
@@ -62,10 +64,10 @@ public interface AttendanceInfoService extends IService<AttendanceInfo> {
     Boolean add(AttendanceInfoDTO attendanceInfoDTO);
 
     /**
-     * 用户信息详情
+     * 用户考勤详情
      *
-     * @param attendanceId 用户ID
-     * @return WebUserVO
+     * @param playerId 球员ID
+     * @return 考情集合
      */
-    AttendanceInfoVO detail(Long attendanceId);
+    List<AttendanceInfoVO> detail(Long playerId);
 }

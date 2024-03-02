@@ -5,12 +5,11 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.team_manage.controller.matchinfo.dto.MatchInfoDTO;
 import com.team_manage.controller.matchinfo.query.MatchInfoQry;
 import com.team_manage.controller.matchinfo.vo.MatchInfoVO;
-import com.team_manage.controller.noticeinfo.query.NoticeInfoQry;
 import com.team_manage.entity.MatchInfo;
 
 /**
  * <p>
- * 用户表 服务类
+ * 赛事表 服务类
  * </p>
  *
  * @author XXX
@@ -20,16 +19,7 @@ public interface MatchInfoService extends IService<MatchInfo> {
 
 
     /**
-     * 修改用户信息
-     *x
-     * @param matchInfoDTO 用户DTO
-     * @return Boolean
-     */
-    Boolean edit(MatchInfoDTO matchInfoDTO);
-
-
-    /**
-     * 用户信息分页查询
+     * 赛事信息分页查询
      *
      * @param qry 查询Qry
      * @return WebUserVO
@@ -38,35 +28,35 @@ public interface MatchInfoService extends IService<MatchInfo> {
 
 
     /**
-     * 删除用户信息
+     * 删除赛事信息
      *
-     * @param matchId 用户ID
+     * @param matchId 赛事ID
      * @return Boolean
      */
     Boolean del(Long matchId);
 
     /**
-     * 修改用户信息
+     * 修改赛事信息
      *
-     * @param noticeId     用户ID
-     * @param matchInfoDTO 用户DTO
+     * @param noticeId     赛事户ID
+     * @param matchInfoDTO 赛事DTO
      * @return Boolean
      */
     Boolean webEdit(Long noticeId, MatchInfoDTO matchInfoDTO);
 
     /**
-     * 新增用户信息
+     * 新增赛事信息
      *
-     * @param matchInfoDTO 用户DTO
+     * @param matchInfoDTO 赛事DTO
      * @return Boolean
      */
     Boolean add(MatchInfoDTO matchInfoDTO);
 
     /**
-     * 用户信息详情
+     * 赛事信息详情
      *
-     * @param matchId 用户ID
-     * @return WebUserVO
+     * @param matchId 赛事 ID
+     * @return MatchInfoVO
      */
     MatchInfoVO detail(Long matchId);
 }

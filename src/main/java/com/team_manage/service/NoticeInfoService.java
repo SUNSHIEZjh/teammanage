@@ -9,7 +9,7 @@ import com.team_manage.entity.NoticeInfo;
 
 /**
  * <p>
- * 用户表 服务类
+ * 公告信息 服务类
  * </p>
  *
  * @author XXX
@@ -19,53 +19,53 @@ public interface NoticeInfoService extends IService<NoticeInfo> {
 
 
     /**
-     * 修改用户信息
+     * 修改公告信息信息
      *
-     * @param noticeInfoDTO 用户DTO
+     * @param noticeInfoDTO 公告信息DTO
      * @return Boolean
      */
     Boolean edit(NoticeInfoDTO noticeInfoDTO);
 
 
     /**
-     * 用户信息分页查询
+     * 公告信息信息分页查询
      *
      * @param qry 查询Qry
-     * @return WebUserVO
+     * @return NoticeInfoVO
      */
     IPage<NoticeInfoVO> pageByQry(NoticeInfoQry qry);
 
 
     /**
-     * 删除用户信息
+     * 删除公告信息信息
      *
-     * @param noticeId 用户ID
+     * @param noticeId 公告信息ID
      * @return Boolean
      */
     Boolean del(Long noticeId);
 
     /**
-     * 修改用户信息
+     * 修改公告信息信息
      *
-     * @param noticeId      用户ID
-     * @param noticeInfoDTO 用户DTO
+     * @param noticeId      公告信息ID
+     * @param noticeInfoDTO 公告信息DTO
      * @return Boolean
      */
     Boolean webEdit(Long noticeId, NoticeInfoDTO noticeInfoDTO);
 
     /**
-     * 新增用户信息
+     * 新增公告信息信息
      *
-     * @param noticeInfoDTO 用户DTO
+     * @param noticeInfoDTO 公告信息DTO
      * @return Boolean
      */
     Boolean add(NoticeInfoDTO noticeInfoDTO);
 
     /**
-     * 用户信息详情
+     * 公告信息信息详情
      *
-     * @param noticeId 用户ID
-     * @return WebUserVO
+     * @param noticeId 公告信息ID
+     * @return NoticeInfoVO
      */
     NoticeInfoVO detail(Long noticeId);
 }

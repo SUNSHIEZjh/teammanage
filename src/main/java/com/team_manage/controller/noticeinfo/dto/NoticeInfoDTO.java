@@ -10,7 +10,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 成都思致科技有限公司
+ *
  *
  * @author zjh
  * @version V1.0

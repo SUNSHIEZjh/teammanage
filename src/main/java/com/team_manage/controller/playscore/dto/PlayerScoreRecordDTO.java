@@ -10,7 +10,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 成都思致科技有限公司
+ *
  *
  * @author zjh
  * @version V1.0
@@ -45,29 +45,29 @@ public class PlayerScoreRecordDTO implements Serializable {
     @ApiModelProperty(value = "赛事")
     private Long matchId;
     /**
-     * 球衣号
+     * 得分
      */
-    @ApiModelProperty(value = "球衣号")
+    @ApiModelProperty(value = "得分")
     private Integer score;
     /**
-     * 性别
+     * 助攻
      */
-    @ApiModelProperty(value = "性别")
+    @ApiModelProperty(value = "助攻")
     private Integer assistingScore;
     /**
-     * 年龄
+     * 盖帽
      */
-    @ApiModelProperty(value = "年龄")
+    @ApiModelProperty(value = "盖帽")
     private Integer blockShotScore;
     /**
-     * 身高
+     * 篮板
      */
-    @ApiModelProperty(value = "身高")
+    @ApiModelProperty(value = "篮板")
     private Integer backboardScore;
     /**
-     * 体重
+     * 抢断
      */
-    @ApiModelProperty(value = "体重")
+    @ApiModelProperty(value = "抢断")
     private Integer tackleScore;
     /**
      * 删除标志，0未删除 1删除

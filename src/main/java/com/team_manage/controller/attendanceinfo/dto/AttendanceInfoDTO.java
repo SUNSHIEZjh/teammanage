@@ -10,7 +10,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 成都思致科技有限公司
+ *
  *
  * @author zjh
  * @version V1.0
@@ -39,6 +39,13 @@ public class AttendanceInfoDTO implements Serializable {
      */
     @ApiModelProperty(value = "球员ID")
     private Long playerId;
+
+    /**
+     * 考勤年份
+     */
+    @ApiModelProperty(value = "考勤年份")
+    private Integer attendanceYear;
+
     /**
      * 考勤月份
      */

@@ -35,11 +35,23 @@ public class AttendanceInfoVO implements Serializable {
      */
     @ApiModelProperty("球员ID")
     private String playerId;
+
+    /**
+     * 考勤年份
+     */
+    @ApiModelProperty(value = "考勤年份")
+    private Integer attendanceYear;
     /**
      * 考勤月份
      */
     @ApiModelProperty("考勤月份")
     private Integer attendanceMonth;
+
+    /**
+     * 考勤月份（YYYY-MM）
+     */
+    @ApiModelProperty("考勤月份（YYYY-MM）")
+    private String  attendanceYearMonth;
     /**
      * 病假天数
      */

@@ -10,7 +10,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 成都思致科技有限公司
+ *
  *
  * @author zjh
  * @version V1.0
@@ -49,6 +49,11 @@ public class PlayerOnDepartDTO implements Serializable {
      */
     @ApiModelProperty(value = "入职日期")
     private Date onDate;
+    /**
+     * 离开日期
+     */
+    @ApiModelProperty("离开日期")
+    private Date departDate;
     /**
      * 性别
      */
