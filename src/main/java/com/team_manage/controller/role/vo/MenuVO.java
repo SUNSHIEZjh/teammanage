@@ -68,9 +68,5 @@ public class MenuVO implements Serializable {
      */
     private String menuIcon;
 
-    /**
-     * 多端：0、WEB端 1、小程序端
-     */
-    private String menuMultiterminal;
 
 }

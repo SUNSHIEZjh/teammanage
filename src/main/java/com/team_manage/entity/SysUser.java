@@ -38,10 +38,6 @@ public class SysUser implements Serializable {
      */
     private String userName;
 
-    /**
-     * 背景图
-     */
-    private String backGround;
 
     /**
      * 用户账号

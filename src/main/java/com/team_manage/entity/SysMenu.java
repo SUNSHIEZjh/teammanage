@@ -74,11 +74,6 @@ public class SysMenu implements Serializable {
     private String menuIcon;
 
     /**
-     * 多端：0、WEB端 1、小程序端
-     */
-    private Integer menuMultiterminal;
-
-    /**
      * 删除标志，0未删除 1删除
      */
     @TableField(fill = FieldFill.INSERT)

@@ -43,10 +43,6 @@ public class SysRolePer implements Serializable {
      */
     private String perFlag;
 
-    /**
-     * 权限端：0、WEB端 1、小程序端
-     */
-    private Integer perMultiterminal;
 
     /**
      * 删除标志，0未删除 1删除

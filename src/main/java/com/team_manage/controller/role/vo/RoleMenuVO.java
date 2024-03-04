@@ -91,11 +91,6 @@ public class RoleMenuVO implements Serializable {
     @ApiModelProperty("菜单图标")
     private String menuIcon;
 
-    /**
-     * 多端：0、WEB端 1、小程序端
-     */
-    @ApiModelProperty("多端：0、WEB端 1、小程序端")
-    private String menuMultiterminal;
 
     /**
      * 子菜单
