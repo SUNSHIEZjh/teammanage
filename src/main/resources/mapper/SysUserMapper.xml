@@ -6,7 +6,6 @@
         SELECT
             su.user_id,
             su.user_name,
-            su.back_ground,
             su.user_avatar,
             su.user_account,
             su.user_phone,
@@ -34,7 +33,6 @@
         SELECT
             su.user_id,
             su.user_name,
-            su.back_ground,
             su.user_avatar,
             su.user_account,
             su.user_phone,

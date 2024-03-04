@@ -12,7 +12,6 @@
         sm.menu_type,
         sm.menu_sort,
         sm.menu_icon,
-        sm.menu_multiterminal,
         srm1.role_menu_id,
         srm1.role_id
         FROM
