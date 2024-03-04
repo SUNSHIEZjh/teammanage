@@ -17,9 +17,9 @@
             sr.role_id,
             sr.role_flag
         FROM
-            sys_user su
-                LEFT JOIN sys_user_role sur ON sur.user_id = su.user_id AND sur.delete_flag = 0
-                LEFT JOIN sys_role sr ON sur.role_id = sr.role_id AND sr.delete_flag = 0
+            user su
+                LEFT JOIN user_role sur ON sur.user_id = su.user_id AND sur.delete_flag = 0
+                LEFT JOIN role sr ON sur.role_id = sr.role_id AND sr.delete_flag = 0
         WHERE
             su.delete_flag = 0
         <if test="qry.userName != null and qry.userName != ''">
@@ -45,9 +45,9 @@
             sr.role_id,
             sr.role_flag
         FROM
-            sys_user su
-                LEFT JOIN sys_user_role sur ON sur.user_id = su.user_id AND sur.delete_flag = 0
-                LEFT JOIN sys_role sr ON sur.role_id = sr.role_id AND sr.delete_flag = 0
+            user su
+                LEFT JOIN user_role sur ON sur.user_id = su.user_id AND sur.delete_flag = 0
+                LEFT JOIN role sr ON sur.role_id = sr.role_id AND sr.delete_flag = 0
         WHERE
             su.delete_flag = 0 AND su.user_id = #{userId}
     </select>

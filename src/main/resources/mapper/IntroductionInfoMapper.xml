@@ -44,7 +44,7 @@
             IF( li.like_id IS NOT NULL, 1, 0 ) AS is_like
         FROM
             introduction_info ii
-        LEFT JOIN sys_user su ON ii.user_id = su.user_id
+        LEFT JOIN user su ON ii.user_id = su.user_id
         LEFT JOIN ( SELECT collect_id, business_id FROM collect_info WHERE user_id = #{qry.userId} AND delete_flag = 0 ) ci ON ci.business_id = ii.introduction_id
         LEFT JOIN ( SELECT like_id, business_id FROM like_info WHERE user_id = #{qry.userId} AND delete_flag = 0 ) li ON li.business_id = ii.introduction_id
         WHERE
@@ -83,7 +83,7 @@
         IF( li.like_id IS NOT NULL, 1, 0 ) AS is_like
         FROM
         introduction_info ii
-        LEFT JOIN sys_user su ON ii.user_id = su.user_id
+        LEFT JOIN user su ON ii.user_id = su.user_id
         LEFT JOIN ( SELECT collect_id, business_id FROM collect_info WHERE user_id = #{qry.userId} AND delete_flag = 0 ) ci ON ci.business_id = ii.introduction_id
         LEFT JOIN ( SELECT like_id, business_id FROM like_info WHERE user_id = #{qry.userId} AND delete_flag = 0 ) li ON li.business_id = ii.introduction_id
         WHERE
@@ -122,7 +122,7 @@
             IF( li.like_id IS NOT NULL, 1, 0 ) AS is_like
         FROM
             introduction_info ii
-                LEFT JOIN sys_user su ON ii.user_id = su.user_id
+                LEFT JOIN user su ON ii.user_id = su.user_id
                 LEFT JOIN ( SELECT collect_id, business_id FROM collect_info WHERE user_id = #{userId} AND delete_flag = 0 ) ci ON ci.business_id = ii.introduction_id
                 LEFT JOIN ( SELECT like_id, business_id FROM like_info WHERE user_id = #{userId} AND delete_flag = 0 ) li ON li.business_id = ii.introduction_id
         WHERE
@@ -144,7 +144,7 @@
             su.user_avatar
         FROM
             introduction_info ii
-        LEFT JOIN sys_user su ON ii.user_id = su.user_id
+        LEFT JOIN user su ON ii.user_id = su.user_id
         WHERE
         ii.delete_flag = 0
         <if test="qry.introductionName != null and qry.introductionName != ''">
@@ -187,7 +187,7 @@
         IF( li.like_id IS NOT NULL, 1, 0 ) AS is_like
         FROM
         introduction_info ii
-        LEFT JOIN sys_user su ON ii.user_id = su.user_id
+        LEFT JOIN user su ON ii.user_id = su.user_id
         LEFT JOIN ( SELECT collect_id, business_id FROM collect_info WHERE user_id = #{qry.loginId} AND delete_flag = 0 ) ci ON ci.business_id = ii.introduction_id
         LEFT JOIN ( SELECT like_id, business_id FROM like_info WHERE user_id = #{qry.loginId} AND delete_flag = 0 ) li ON li.business_id = ii.introduction_id
         WHERE

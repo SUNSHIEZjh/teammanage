@@ -7,8 +7,8 @@
             sr.role_name,
             sr.role_flag
         FROM
-            sys_user_role sur
-                INNER JOIN sys_role sr ON sur.role_id = sr.role_id AND sr.delete_flag = 0
+            user_role sur
+                INNER JOIN role sr ON sur.role_id = sr.role_id AND sr.delete_flag = 0
         WHERE
             sur.delete_flag = 0 AND sur.user_id = #{userId}
     </select>
@@ -16,8 +16,8 @@
         SELECT
             *
         FROM
-            sys_user_role sur
-                INNER JOIN sys_user su ON sur.user_id = su.user_id AND su.delete_flag = 0
+            user_role sur
+                INNER JOIN user su ON sur.user_id = su.user_id AND su.delete_flag = 0
         WHERE
             sur.delete_flag = 0 AND sur.role_id = #{roleId}
     </select>

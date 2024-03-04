@@ -53,7 +53,7 @@
             IFNULL( cif.comment_num, 0 ) AS comment_num
         FROM
             topic_info ti
-                LEFT JOIN sys_user su ON ti.user_id = su.user_id
+                LEFT JOIN user su ON ti.user_id = su.user_id
                 LEFT JOIN ( SELECT collect_id, business_id FROM collect_info WHERE user_id = #{qry.userId} AND delete_flag = 0 ) ci ON ci.business_id = ti.topic_id
                 LEFT JOIN ( SELECT like_id, business_id FROM like_info WHERE user_id = #{qry.userId} AND delete_flag = 0 ) li ON li.business_id = ti.topic_id
                 LEFT JOIN ( SELECT topic_id, COUNT(*) AS comment_num FROM comment_info WHERE delete_flag = 0 GROUP BY topic_id) cif ON cif.topic_id = ti.topic_id
@@ -92,7 +92,7 @@
             IFNULL( cif.comment_num, 0 ) AS comment_num
         FROM
         topic_info ti
-        LEFT JOIN sys_user su ON ti.user_id = su.user_id
+        LEFT JOIN user su ON ti.user_id = su.user_id
         LEFT JOIN ( SELECT collect_id, business_id FROM collect_info WHERE user_id = #{qry.userId} AND delete_flag = 0 ) ci ON ci.business_id = ti.topic_id
         LEFT JOIN ( SELECT like_id, business_id FROM like_info WHERE user_id = #{qry.userId} AND delete_flag = 0 ) li ON li.business_id = ti.topic_id
         LEFT JOIN ( SELECT topic_id, COUNT(*) AS comment_num FROM comment_info WHERE delete_flag = 0 GROUP BY topic_id) cif ON cif.topic_id = ti.topic_id
@@ -131,7 +131,7 @@
             IFNULL( cif.comment_num, 0 ) AS comment_num
         FROM
             topic_info ti
-                LEFT JOIN sys_user su ON ti.user_id = su.user_id
+                LEFT JOIN user su ON ti.user_id = su.user_id
                 LEFT JOIN ( SELECT collect_id, business_id FROM collect_info WHERE user_id = #{userId} AND delete_flag = 0 ) ci ON ci.business_id = ti.topic_id
                 LEFT JOIN ( SELECT like_id, business_id FROM like_info WHERE user_id = #{userId} AND delete_flag = 0 ) li ON li.business_id = ti.topic_id
                 LEFT JOIN ( SELECT topic_id, COUNT(*) AS comment_num FROM comment_info WHERE delete_flag = 0 GROUP BY topic_id) cif ON cif.topic_id = ti.topic_id
@@ -155,7 +155,7 @@
         IFNULL( cif.comment_num, 0 ) AS comment_num
         FROM
         topic_info ti
-        LEFT JOIN sys_user su ON ti.user_id = su.user_id
+        LEFT JOIN user su ON ti.user_id = su.user_id
         LEFT JOIN ( SELECT collect_id, business_id FROM collect_info WHERE user_id = #{qry.userId} AND delete_flag = 0 ) ci ON ci.business_id = ti.topic_id
         LEFT JOIN ( SELECT like_id, business_id FROM like_info WHERE user_id = #{qry.userId} AND delete_flag = 0 ) li ON li.business_id = ti.topic_id
         LEFT JOIN ( SELECT topic_id, COUNT(*) AS comment_num FROM comment_info WHERE delete_flag = 0 GROUP BY topic_id) cif ON cif.topic_id = ti.topic_id
@@ -194,7 +194,7 @@
         IFNULL( cif.comment_num, 0 ) AS comment_num
         FROM
         topic_info ti
-        LEFT JOIN sys_user su ON ti.user_id = su.user_id
+        LEFT JOIN user su ON ti.user_id = su.user_id
         LEFT JOIN ( SELECT collect_id, business_id FROM collect_info WHERE user_id = #{qry.loginId} AND delete_flag = 0 ) ci ON ci.business_id = ti.topic_id
         LEFT JOIN ( SELECT like_id, business_id FROM like_info WHERE user_id = #{qry.loginId} AND delete_flag = 0 ) li ON li.business_id = ti.topic_id
         LEFT JOIN ( SELECT topic_id, COUNT(*) AS comment_num FROM comment_info WHERE delete_flag = 0 GROUP BY topic_id) cif ON cif.topic_id = ti.topic_id

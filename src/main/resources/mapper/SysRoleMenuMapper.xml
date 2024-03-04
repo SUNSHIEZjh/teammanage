@@ -16,9 +16,9 @@
         srm1.role_menu_id,
         srm1.role_id
         FROM
-        sys_menu sm
+        menu sm
         LEFT JOIN (
-        SELECT srm.role_menu_id, srm.role_id, srm.menu_id FROM sys_role_menu srm WHERE delete_flag = 0 AND srm.role_id = #{roleId}
+        SELECT srm.role_menu_id, srm.role_id, srm.menu_id FROM role_menu srm WHERE delete_flag = 0 AND srm.role_id = #{roleId}
         ) srm1 ON sm.menu_id = srm1.menu_id
         WHERE
         sm.delete_flag = 0

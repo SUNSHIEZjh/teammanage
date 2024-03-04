@@ -12,6 +12,7 @@ import com.team_manage.common.Result;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -134,7 +135,7 @@ public class SaTokenConfigure implements WebMvcConfigurer {
     /**
      * 注册 [Sa-Token全局过滤器]
      */
-//    @Bean
+    @Bean
     public SaServletFilter getSaServletFilter() {
         return new SaServletFilter()
                 // 拦截与排除 path
