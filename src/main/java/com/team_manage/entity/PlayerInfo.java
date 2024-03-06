@@ -31,7 +31,7 @@ import java.util.Date;
 public class PlayerInfo implements Serializable {
 
     @TableId
-    private Long KeyId;
+    private Long keyId;
     /**
      * 名称
      */

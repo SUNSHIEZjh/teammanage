@@ -32,7 +32,7 @@ public class TeamPlayerInfo implements Serializable {
 
 
     @TableId
-    private Long KeyId;
+    private Long keyId;
     /**
      * 球员ID
      */

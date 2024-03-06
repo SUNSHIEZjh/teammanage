@@ -30,7 +30,7 @@ import java.util.Date;
 public class NoticeInfo implements Serializable {
 
     @TableId
-    private Long KeyId;
+    private Long keyId;
     /**
      * 公告标题
      */

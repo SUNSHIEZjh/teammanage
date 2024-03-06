@@ -30,7 +30,7 @@ import java.util.Date;
 public class MatchInfo {
 
     @TableId
-    private Long KeyId;
+    private Long keyId;
     /**
      * 赛事名称
      */

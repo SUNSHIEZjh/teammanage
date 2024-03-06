@@ -30,7 +30,7 @@ import java.util.Date;
 public class AttendanceInfo {
 
     @TableId
-    private Long KeyId;
+    private Long keyId;
     /**
      * 球员ID
      */

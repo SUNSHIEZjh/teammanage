@@ -31,7 +31,7 @@ import java.util.Date;
 public class TranPlanInfo implements Serializable {
 
     @TableId
-    private Long KeyId;
+    private Long keyId;
 
     /**
      * 训练事项

@@ -31,7 +31,7 @@ import java.util.Date;
 public class TeamInfo implements Serializable {
 
     @TableId
-    private Long KeyId;
+    private Long keyId;
     /**
      * 球队名称
      */
