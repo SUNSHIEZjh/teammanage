@@ -3,13 +3,13 @@
 <mapper namespace="com.team_manage.mapper.TeamInfoMapper">
     <select id="teamInfoPageByQry" resultType="com.team_manage.controller.teaminfo.vo.TeamInfoVO">
         SELECT
-            ni.key_id,
-            ni.team_name,
-            ni.team_nature
+            ti.key_id,
+            ti.team_name,
+            ti.team_nature
         FROM
         team_info ti
         WHERE
-        ni.delete_flag = 0
+        ti.delete_flag = 0
         <if test="qry.teamName != null and qry.teamName != ''">
             AND ti.team_name LIKE CONCAT('%' , #{qry.teamName}, '%')
         </if>

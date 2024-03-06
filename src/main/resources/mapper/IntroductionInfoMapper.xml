@@ -28,27 +28,27 @@
     </update>
     <select id="pageByQry" resultType="com.team_manage.controller.introduction.vo.WxIntroductionInfoVO">
         SELECT
-            ii.introduction_id,
-            ii.introduction_name,
-            ii.introduction_img,
-            ii.introduction_time,
-            ii.user_id,
-            ii.introduction_desc,
-            ii.introduction_like,
-            ii.introduction_collect,
-            ii.introduction_status,
-            ii.audit_result,
-            su.user_name,
-            su.user_avatar,
-            IF( ci.collect_id IS NOT NULL, 1, 0 ) AS is_collect,
-            IF( li.like_id IS NOT NULL, 1, 0 ) AS is_like
+        ii.introduction_id,
+        ii.introduction_name,
+        ii.introduction_img,
+        ii.introduction_time,
+        ii.user_id,
+        ii.introduction_desc,
+        ii.introduction_like,
+        ii.introduction_collect,
+        ii.introduction_status,
+        ii.audit_result,
+        su.user_name,
+        su.user_avatar,
+        IF( ci.collect_id IS NOT NULL, 1, 0 ) AS is_collect,
+        IF( li.like_id IS NOT NULL, 1, 0 ) AS is_like
         FROM
-            introduction_info ii
+        introduction_info ii
         LEFT JOIN user su ON ii.user_id = su.user_id
         LEFT JOIN ( SELECT collect_id, business_id FROM collect_info WHERE user_id = #{qry.userId} AND delete_flag = 0 ) ci ON ci.business_id = ii.introduction_id
         LEFT JOIN ( SELECT like_id, business_id FROM like_info WHERE user_id = #{qry.userId} AND delete_flag = 0 ) li ON li.business_id = ii.introduction_id
         WHERE
-            ii.delete_flag = 0 AND ii.introduction_status = 2
+        ii.delete_flag = 0 AND ii.introduction_status = 2
         <if test="qry.keyWord != null and qry.keyWord != ''">
             AND (ii.introduction_name LIKE CONCAT('%', #{qry.keyWord}, '%') OR ii.introduction_desc LIKE CONCAT('%', #{qry.keyWord}, '%'))
         </if>
@@ -130,20 +130,20 @@
     </select>
     <select id="pageByQry1" resultType="com.team_manage.controller.introduction.vo.WxIntroductionInfoVO">
         SELECT
-            ii.introduction_id,
-            ii.introduction_name,
-            ii.introduction_img,
-            ii.introduction_time,
-            ii.user_id,
-            ii.introduction_desc,
-            ii.introduction_like,
-            ii.introduction_collect,
-            ii.introduction_status,
-            ii.audit_result,
-            su.user_name,
-            su.user_avatar
+        ii.introduction_id,
+        ii.introduction_name,
+        ii.introduction_img,
+        ii.introduction_time,
+        ii.user_id,
+        ii.introduction_desc,
+        ii.introduction_like,
+        ii.introduction_collect,
+        ii.introduction_status,
+        ii.audit_result,
+        su.user_name,
+        su.user_avatar
         FROM
-            introduction_info ii
+        introduction_info ii
         LEFT JOIN user su ON ii.user_id = su.user_id
         WHERE
         ii.delete_flag = 0
@@ -171,27 +171,27 @@
     </select>
     <select id="user" resultType="com.team_manage.controller.introduction.vo.WxIntroductionInfoVO">
         SELECT
-        ii.introduction_id,
-        ii.introduction_name,
-        ii.introduction_img,
-        ii.introduction_time,
-        ii.user_id,
-        ii.introduction_desc,
-        ii.introduction_like,
-        ii.introduction_collect,
-        ii.introduction_status,
-        ii.audit_result,
-        su.user_name,
-        su.user_avatar,
-        IF( ci.collect_id IS NOT NULL, 1, 0 ) AS is_collect,
-        IF( li.like_id IS NOT NULL, 1, 0 ) AS is_like
+            ii.introduction_id,
+            ii.introduction_name,
+            ii.introduction_img,
+            ii.introduction_time,
+            ii.user_id,
+            ii.introduction_desc,
+            ii.introduction_like,
+            ii.introduction_collect,
+            ii.introduction_status,
+            ii.audit_result,
+            su.user_name,
+            su.user_avatar,
+            IF( ci.collect_id IS NOT NULL, 1, 0 ) AS is_collect,
+            IF( li.like_id IS NOT NULL, 1, 0 ) AS is_like
         FROM
-        introduction_info ii
-        LEFT JOIN user su ON ii.user_id = su.user_id
-        LEFT JOIN ( SELECT collect_id, business_id FROM collect_info WHERE user_id = #{qry.loginId} AND delete_flag = 0 ) ci ON ci.business_id = ii.introduction_id
-        LEFT JOIN ( SELECT like_id, business_id FROM like_info WHERE user_id = #{qry.loginId} AND delete_flag = 0 ) li ON li.business_id = ii.introduction_id
+            introduction_info ii
+                LEFT JOIN user su ON ii.user_id = su.user_id
+                LEFT JOIN ( SELECT collect_id, business_id FROM collect_info WHERE user_id = #{qry.loginId} AND delete_flag = 0 ) ci ON ci.business_id = ii.introduction_id
+                LEFT JOIN ( SELECT like_id, business_id FROM like_info WHERE user_id = #{qry.loginId} AND delete_flag = 0 ) li ON li.business_id = ii.introduction_id
         WHERE
-        ii.delete_flag = 0 AND ii.user_id = #{qry.userId}
+            ii.delete_flag = 0 AND ii.user_id = #{qry.userId}
         ORDER BY ii.introduction_id DESC
     </select>
 </mapper>

@@ -4,21 +4,21 @@
 
     <select id="mine" resultType="com.team_manage.controller.order.vo.OrderInfoVO">
         SELECT
-            oi.order_id,
-            oi.order_num,
-            oi.order_time,
-            oi.attractions_id,
-            oi.order_date,
-            oi.user_id,
-            oi.order_total,
-            oi.order_status,
-            ai.attractions_name,
-            su.user_name,
-            su.user_avatar
+        oi.order_id,
+        oi.order_num,
+        oi.order_time,
+        oi.attractions_id,
+        oi.order_date,
+        oi.user_id,
+        oi.order_total,
+        oi.order_status,
+        ai.attractions_name,
+        su.user_name,
+        su.user_avatar
         FROM
-            order_info oi
-                LEFT JOIN attractions_info ai ON oi.attractions_id = ai.attractions_id
-                LEFT JOIN user su ON oi.user_id = su.user_id
+        order_info oi
+        LEFT JOIN attractions_info ai ON oi.attractions_id = ai.attractions_id
+        LEFT JOIN user su ON oi.user_id = su.user_id
         WHERE oi.delete_flag = 0
         AND oi.user_id = #{qry.userId}
         <if test="qry.orderNum != 0 and qry.orderNum != null">
@@ -31,21 +31,21 @@
     </select>
     <select id="pageByQry" resultType="com.team_manage.controller.order.vo.OrderInfoVO">
         SELECT
-            oi.order_id,
-            oi.order_num,
-            oi.order_time,
-            oi.attractions_id,
-            oi.order_date,
-            oi.user_id,
-            oi.order_total,
-            oi.order_status,
-            ai.attractions_name,
-            su.user_name,
-            su.user_avatar
+        oi.order_id,
+        oi.order_num,
+        oi.order_time,
+        oi.attractions_id,
+        oi.order_date,
+        oi.user_id,
+        oi.order_total,
+        oi.order_status,
+        ai.attractions_name,
+        su.user_name,
+        su.user_avatar
         FROM
-            order_info oi
-                LEFT JOIN attractions_info ai ON oi.attractions_id = ai.attractions_id
-                LEFT JOIN user su ON oi.user_id = su.user_id
+        order_info oi
+        LEFT JOIN attractions_info ai ON oi.attractions_id = ai.attractions_id
+        LEFT JOIN user su ON oi.user_id = su.user_id
         WHERE oi.delete_flag = 0
         <if test="qry.userId != 0 and qry.userId != null">
             AND oi.user_id = #{qry.userId}
