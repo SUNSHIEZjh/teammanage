@@ -320,8 +320,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         // 存入返回VO
         webLoginVO.setUserId(user.getUserId())
                 .setUserName(user.getUserName())
-                .setUserAvatar(user.getUserAvatar())
-                .setBackGround(user.getBackGround());
+                .setUserAvatar(user.getUserAvatar());
         // 查询用户角色
         SysRole role = userRoleMapper.selectRoleByUserId(user.getUserId());
         if (ObjectUtils.isNotEmpty(role)) {

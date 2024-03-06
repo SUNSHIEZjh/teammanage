@@ -77,4 +77,10 @@ public class WebUserDTO implements Serializable {
     @ApiModelProperty("角色ID")
     private Long roleId;
 
+
+    /**
+     * 用户密码
+     */
+    private String userPassword;
+
 }
