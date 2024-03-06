@@ -98,6 +98,7 @@ public class PlayerInfoServiceImpl extends ServiceImpl<PlayerInfoMapper, PlayerI
         webUserDTO.setUserName(playerInfo.getPlayerName());
         webUserDTO.setUserAccount(playerInfo.getAccount());
         webUserDTO.setUserPassword("Aa12345");
+        webUserDTO.setRoleId(240306112439491L);
         webUserDTO.setUserBirthday(playerInfo.getBirthday());
         //人员在离职信息表
         PlayerOnDepartDTO playerOnDepartDTO = new PlayerOnDepartDTO();
