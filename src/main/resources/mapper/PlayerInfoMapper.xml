@@ -17,7 +17,8 @@
         pi.account,
         pod.plary_location,
         pod.native_place,
-        t.teanName
+        t.teanName,
+        pod.on_depart_flag
         FROM
         player_info pi
         LEFT JOIN player_on_depart pod ON pi.key_id = pod.player_id

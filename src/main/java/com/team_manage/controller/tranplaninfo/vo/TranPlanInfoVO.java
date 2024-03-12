@@ -29,7 +29,7 @@ public class TranPlanInfoVO implements Serializable {
      * 业务主键
      */
     @ApiModelProperty("业务主键")
-    private String keyId;
+    private Long keyId;
     /**
      * 训练事项
      */
@@ -39,7 +39,7 @@ public class TranPlanInfoVO implements Serializable {
      * 所属球员ID
      */
     @ApiModelProperty("所属球员ID")
-    private String playerId;
+    private Long playerId;
     /**
      * 计划时间
      */

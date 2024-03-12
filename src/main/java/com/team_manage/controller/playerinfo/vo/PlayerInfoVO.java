@@ -28,7 +28,7 @@ public class PlayerInfoVO implements Serializable {
      * 业务主键
      */
     @ApiModelProperty("业务主键")
-    private String keyId;
+    private Long keyId;
     /**
      * 名称
      */
@@ -148,5 +148,11 @@ public class PlayerInfoVO implements Serializable {
      */
     @ApiModelProperty("修改时间")
     private Date updateTime;
+
+    /**
+     * 是否在职 0 - 离职 1- 在职
+     */
+    @ApiModelProperty("修改时间")
+    private String onDepartFlag;
 
 }

@@ -29,12 +29,12 @@ public class AttendanceInfoVO implements Serializable {
      * 业务主键
      */
     @ApiModelProperty("业务主键")
-    private String keyId;
+    private Long keyId;
     /**
      * 球员ID
      */
     @ApiModelProperty("球员ID")
-    private String playerId;
+    private Long playerId;
 
     /**
      * 考勤年份

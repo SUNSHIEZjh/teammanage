@@ -7,13 +7,12 @@
             ni.key_id,
             ni.notice_title,
             ni.release_time,
-            ni.notice_content,
-            ni.complete_flag
+            ni.notice_content
         FROM
         notice_info ni
         WHERE
         ni.delete_flag = 0
-        <if test="qry.userName != null and qry.userName != ''">
+        <if test="qry.noticeTitle != null and qry.noticeTitle != ''">
             AND ni.notice_title LIKE CONCAT('%' , #{qry.noticeTitle}, '%')
         </if>
         ORDER BY ni.release_time DESC

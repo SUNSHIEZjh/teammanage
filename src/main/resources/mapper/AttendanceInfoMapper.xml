@@ -7,6 +7,7 @@
         ai.player_id,
         ai.attendance_year,
         ai.attendance_month,
+        concat( ai.attendance_year,'-',ai.attendance_month) as attendanceYearMonth,
         sum(ai.sick_leave_day) as sick_leave_day,
         sum(ai.absenteeism_day) as absenteeism_day,
         sum(ai.personal_leave_day) as personal_leave_day,

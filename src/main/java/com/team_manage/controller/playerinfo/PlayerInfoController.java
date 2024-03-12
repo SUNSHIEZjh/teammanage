@@ -75,7 +75,7 @@ public class PlayerInfoController {
     public Result<Boolean> depart(@PathVariable @NotNull(message = "用户ID") Long playerId,  @RequestBody @Valid PlayerOnDepartDTO playerOnDepartDTO) {
         return Result.success(playerInfoService.depart(playerId,playerOnDepartDTO));
     }
-    @ApiOperation("球员管理分页查询")
+    @ApiOperation("球员管理列表查询")
     @PostMapping("/list")
     public Result<List<PlayerInfoVO>> list() {
         return Result.success(playerInfoService.getList());

@@ -29,12 +29,12 @@ public class PlayerScoreRecordVO implements Serializable {
      * 业务主键
      */
     @ApiModelProperty("业务主键")
-    private String keyId;
+    private Long keyId;
     /**
      * 球员ID
      */
     @ApiModelProperty("球员ID")
-    private String playerId;
+    private Long playerId;
     /**
      * 球员ID
      */
@@ -44,7 +44,7 @@ public class PlayerScoreRecordVO implements Serializable {
      * 赛事
      */
     @ApiModelProperty("赛事")
-    private String matchId;
+    private Long matchId;
     /**
      * 得分
      */

@@ -14,6 +14,8 @@ import com.team_manage.utils.CopyUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 /**
  * <p>
  * 公告信息 服务实现类
@@ -98,6 +100,7 @@ public class NoticeInfoServiceImpl extends ServiceImpl<NoticeInfoMapper, NoticeI
         // 新增用户
         NoticeInfo noticeInfo = CopyUtils.classCopy(noticeInfoDTO, NoticeInfo.class);
         // // 新增用户信息
+        noticeInfo.setReleaseTime(new Date());
         this.save(noticeInfo);
         return true;
     }

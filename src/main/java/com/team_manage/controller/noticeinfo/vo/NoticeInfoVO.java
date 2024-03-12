@@ -29,7 +29,7 @@ public class NoticeInfoVO implements Serializable {
      * 业务主键
      */
     @ApiModelProperty("业务主键")
-    private String keyId;
+    private Long keyId;
     /**
      * 公告标题
      */

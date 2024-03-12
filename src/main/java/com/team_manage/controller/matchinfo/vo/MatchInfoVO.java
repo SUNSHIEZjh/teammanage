@@ -29,12 +29,12 @@ public class MatchInfoVO implements Serializable {
      * 业务主键
      */
     @ApiModelProperty("业务主键")
-    private String keyId;
+    private Long keyId;
     /**
      * 赛事名称
      */
     @ApiModelProperty("赛事名称")
-    private String playerName;
+    private String matchName;
     /**
      * 赛事时间
      */

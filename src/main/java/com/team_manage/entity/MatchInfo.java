@@ -34,7 +34,7 @@ public class MatchInfo {
     /**
      * 赛事名称
      */
-    private String playerName;
+    private String matchName;
 
 
     /**
