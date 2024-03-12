@@ -7,6 +7,7 @@
             tpi.key_id,
             tpi.plan_object,
             tpi.player_id,
+            pi.player_name,
             tpi.plan_date,
             tpi.complete_flag
         FROM
@@ -14,8 +15,8 @@
                 LEFT JOIN player_info pi ON pi.key_id = tpi.player_id AND pi.delete_flag = 0
         WHERE
         tpi.delete_flag = 0
-        <if test="qry.userName != null and qry.userName != ''">
-            AND pi.user_name LIKE CONCAT('%' , #{qry.userName}, '%')
+        <if test="qry.personName != null and qry.personName != ''">
+            AND pi.player_name LIKE CONCAT('%' , #{qry.personName}, '%')
         </if>
         ORDER BY tpi.create_time DESC
     </select>

@@ -40,6 +40,12 @@ public class TranPlanInfoVO implements Serializable {
      */
     @ApiModelProperty("所属球员ID")
     private Long playerId;
+
+    /**
+     * 所属球员名称
+     */
+    @ApiModelProperty("所属球员名称")
+    private Long playerName;
     /**
      * 计划时间
      */
