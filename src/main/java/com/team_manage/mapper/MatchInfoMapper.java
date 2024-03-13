@@ -4,10 +4,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.team_manage.controller.matchinfo.query.MatchInfoQry;
 import com.team_manage.controller.matchinfo.vo.MatchInfoVO;
-import com.team_manage.controller.noticeinfo.query.NoticeInfoQry;
-import com.team_manage.controller.noticeinfo.vo.NoticeInfoVO;
 import com.team_manage.entity.MatchInfo;
-import com.team_manage.entity.NoticeInfo;
 import org.apache.ibatis.annotations.Param;
 
 /**

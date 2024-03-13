@@ -15,7 +15,7 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value = "人员信息Qry")
+@ApiModel(value = "公告信息查询对象Qry")
 public class NoticeInfoQry extends BaseParam {
 
     private static final long serialVersionUID = 1L;
