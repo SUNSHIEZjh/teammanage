@@ -38,7 +38,7 @@ public class MatchInfoDTO implements Serializable {
      * 赛事名称
      */
     @ApiModelProperty(value = "赛事名称")
-    private String playerName;
+    private String matchName;
     /**
      * 赛事时间
      */

@@ -7,8 +7,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
-import java.util.Date;
-
 /**
  * <p>
  * 训练计划查询对象
@@ -32,12 +30,12 @@ public class AttendanceInfoQry extends BaseParam {
      * 查询月份
      */
     @ApiModelProperty("查询年份")
-    private Date selectYear;
+    private String selectYear;
 
     /**
      * 查询月份
      */
     @ApiModelProperty("查询月份")
-    private Date selectMonth;
+    private String selectMonth;
 
 }
