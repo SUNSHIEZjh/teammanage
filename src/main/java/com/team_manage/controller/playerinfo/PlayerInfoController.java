@@ -81,5 +81,12 @@ public class PlayerInfoController {
         return Result.success(playerInfoService.getList());
     }
 
+
+    @ApiOperation("个人中心详情")
+    @GetMapping("/user/detail/{userId}")
+//    @SaCheckPermission("web:user:detail")
+    public Result<PlayerInfoVO> detailUserInfo(@PathVariable @NotNull(message = "用户ID") Long userId) {
+        return Result.success(playerInfoService.detailUserInfo(userId));
+    }
 }
 

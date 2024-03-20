@@ -78,4 +78,6 @@ public interface PlayerInfoService extends IService<PlayerInfo> {
      * @return PlayerInfo
      */
     List<PlayerInfoVO> getList();
+
+    PlayerInfoVO detailUserInfo(Long userId);
 }

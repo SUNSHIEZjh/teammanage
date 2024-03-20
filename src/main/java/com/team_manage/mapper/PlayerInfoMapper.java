@@ -26,5 +26,5 @@ public interface PlayerInfoMapper extends BaseMapper<PlayerInfo> {
      */
     IPage<PlayerInfoVO> playerInfoPageByQry(@Param("qry") PlayerInfoQry qry, @Param("pages") IPage<PlayerInfoVO> pages);
 
-
+    PlayerInfoVO detailUserInfo(@Param("userId") String userId);
 }

@@ -42,4 +42,43 @@
         </if>
         ORDER BY pi.create_time DESC
     </select>
+    <select id="detailUserInfo" resultType="com.team_manage.controller.playerinfo.vo.PlayerInfoVO">
+    SELECT
+        pi.key_id,
+        a.user_id,
+        a.user_name,
+        a.user_sex,
+        a.user_birthday,
+        pi.plyer_no,
+        pi.age,
+        pi.education,
+        pi.height,
+        pi.weight,
+        a.user_account,
+        pod.plary_location,
+        pod.native_place,
+        t.teanName,
+        pod.on_depart_flag
+    FROM
+        user a
+    left join
+    player_info pi on a.user_account = pi.account
+    LEFT JOIN player_on_depart pod ON pi.key_id = pod.player_id
+    LEFT JOIN (
+    SELECT
+    GROUP_CONCAT( ti.team_name ) AS teanName,
+    tpi.player_id
+    FROM
+    team_info ti
+    LEFT JOIN team_player_info tpi ON ti.key_id = tpi.team_id
+    GROUP BY
+    tpi.player_id
+    ) t ON t.player_id = pi.key_id
+    WHERE
+    a.delete_flag = 0
+    <if test="userId != null and userId != ''">
+        AND a.user_id = #{userId}
+    </if>
+    limit 1
+</select>
 </mapper>

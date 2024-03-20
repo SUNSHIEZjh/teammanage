@@ -163,4 +163,9 @@ public class PlayerInfoServiceImpl extends ServiceImpl<PlayerInfoMapper, PlayerI
     public List<PlayerInfoVO> getList(){
           return  CopyUtils.classCopyList(this.baseMapper.selectList(new LambdaQueryWrapper<>()),PlayerInfoVO.class);
     }
+
+    @Override
+    public PlayerInfoVO detailUserInfo(Long userId) {
+        return getBaseMapper().detailUserInfo(String.valueOf(userId));
+    }
 }

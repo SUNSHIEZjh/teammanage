@@ -30,6 +30,27 @@ public class PlayerInfoVO implements Serializable {
     @ApiModelProperty("业务主键")
     private Long keyId;
     /**
+     * 用户ID
+     */
+    @ApiModelProperty("用户ID")
+    private Long userId;
+    /**
+     * 用户名称
+     */
+    @ApiModelProperty("用户名称")
+    private String userName;
+    /**
+     * 性别 0、未知 1、男 2、女
+     */
+    @ApiModelProperty("性别 0、未知 1、男 2、女")
+    private String userSex;
+    /**
+     * 出生日期
+     */
+    @ApiModelProperty("出生日期")
+    private String userBirthday;
+
+    /**
      * 名称
      */
     @ApiModelProperty("名称")
@@ -79,7 +100,6 @@ public class PlayerInfoVO implements Serializable {
      */
     @ApiModelProperty(value = "账号")
     private String account;
-
 
     /**
      * 籍贯
