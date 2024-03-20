@@ -7,6 +7,8 @@ import com.team_manage.controller.playscore.vo.PlayerScoreRecordVO;
 import com.team_manage.entity.PlayerScoreRecord;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 /**
  * <p>
  * 球员技术得分 Mapper 接口
@@ -26,5 +28,5 @@ public interface PlayerScoreRecordInfoMapper extends BaseMapper<PlayerScoreRecor
      */
     IPage<PlayerScoreRecordVO> scoreRecordPageByQry(@Param("qry") PlayerScoreRecordQry qry, @Param("pages") IPage<PlayerScoreRecordVO> pages);
 
-
+    List<PlayerScoreRecordVO> scoreRecordList(@Param("playerId")String playerId);
 }

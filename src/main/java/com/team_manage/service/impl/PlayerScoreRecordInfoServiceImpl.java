@@ -103,7 +103,7 @@ public class PlayerScoreRecordInfoServiceImpl extends ServiceImpl<PlayerScoreRec
      */
     @Override
     public List<PlayerScoreRecordVO> detailList(Long playerId) {
-        return CopyUtils.classCopyList(this.baseMapper.selectList(new LambdaQueryWrapper<PlayerScoreRecord>().eq(PlayerScoreRecord::getPlayerId, playerId)), PlayerScoreRecordVO.class);
+        return this.baseMapper.scoreRecordList(String.valueOf(playerId));
     }
 
 }

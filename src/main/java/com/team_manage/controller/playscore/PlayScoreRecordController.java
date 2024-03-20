@@ -67,7 +67,7 @@ public class PlayScoreRecordController {
         return Result.success(playScoreRecordService.del(playerScoreId));
     }
 
-    @ApiOperation("球员技术得分分页查询")
+    @ApiOperation("球员技术得分列表查询")
     @PostMapping("/detail/list/{playerId}")
     public Result<List<PlayerScoreRecordVO>> detailList(@PathVariable @NotNull(message = "球员ID") Long playerId) {
         return Result.success(playScoreRecordService.detailList(playerId));

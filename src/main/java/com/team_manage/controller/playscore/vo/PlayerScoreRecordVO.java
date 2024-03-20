@@ -46,6 +46,11 @@ public class PlayerScoreRecordVO implements Serializable {
     @ApiModelProperty("赛事")
     private Long matchId;
     /**
+     * 赛事名称
+     */
+    @ApiModelProperty("赛事名称")
+    private String matchName;
+    /**
      * 得分
      */
     @ApiModelProperty("得分")

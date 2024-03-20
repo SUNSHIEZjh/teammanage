@@ -25,4 +25,30 @@
         group  by psr.player_id
         ORDER BY pi.create_time DESC
     </select>
+
+    <select id="scoreRecordList" resultType="com.team_manage.controller.playscore.vo.PlayerScoreRecordVO">
+        SELECT
+        psr.key_id,
+        psr.player_id,
+        pi.player_name,
+        psr.match_id,
+        mi.match_name,
+        psr.score,
+        psr.assisting_score,
+        psr.block_shot_score,
+        psr.backboard_score,
+        psr.tackle_score
+        FROM
+        player_score_record psr
+        LEFT JOIN player_info pi ON pi.key_id = psr.player_id
+        left join match_info mi on mi.key_id = psr.match_id
+        where
+        psr.delete_flag = 0
+        and pi.delete_flag = 0
+          and mi.delete_flag = 0
+        <if test="playerId != null and playerId != ''">
+            AND psr.player_id = #{playerId}
+        </if>
+        ORDER BY pi.create_time DESC
+    </select>
 </mapper>
