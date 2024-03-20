@@ -37,6 +37,12 @@ public class TeamPlayerInfoVO implements Serializable {
     private Long playerId;
 
     /**
+     * 球员名称
+     */
+    @ApiModelProperty("球员名称")
+    private String playerName;
+
+    /**
      * 球队ID
      */
     @ApiModelProperty(value = "球队ID")

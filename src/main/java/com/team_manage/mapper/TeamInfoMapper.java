@@ -6,9 +6,12 @@ import com.team_manage.controller.matchinfo.query.MatchInfoQry;
 import com.team_manage.controller.matchinfo.vo.MatchInfoVO;
 import com.team_manage.controller.teaminfo.query.TeamInfoQry;
 import com.team_manage.controller.teaminfo.vo.TeamInfoVO;
+import com.team_manage.controller.teaminfo.vo.TeamPlayerInfoVO;
 import com.team_manage.entity.MatchInfo;
 import com.team_manage.entity.TeamInfo;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * <p>
@@ -28,6 +31,9 @@ public interface TeamInfoMapper extends BaseMapper<TeamInfo> {
      * @return WebUserVO
      */
     IPage<TeamInfoVO> teamInfoPageByQry(@Param("qry") TeamInfoQry qry, @Param("pages") IPage<TeamInfoVO> pages);
+
+
+    List<TeamPlayerInfoVO> teamPlayerInfoQry(@Param("teamId") String teamID);
 
 
 }

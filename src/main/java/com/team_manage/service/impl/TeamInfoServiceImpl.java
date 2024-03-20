@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.team_manage.controller.playerinfo.vo.PlayerInfoVO;
 import com.team_manage.controller.teaminfo.dto.TeamInfoDTO;
 import com.team_manage.controller.teaminfo.dto.TeamPlayerInfoDTO;
 import com.team_manage.controller.teaminfo.query.TeamInfoQry;
@@ -110,8 +111,7 @@ public class TeamInfoServiceImpl extends ServiceImpl<TeamInfoMapper, TeamInfo> i
      */
     @Override
     public List<TeamPlayerInfoVO> teamPlayerList(Long teamId) {
-        List<TeamPlayerInfo> teamPlayerInfos = teamPlayerInfoMapper.selectList(new LambdaQueryWrapper<TeamPlayerInfo>().eq(TeamPlayerInfo::getTeamId, teamId));
-        return CopyUtils.classCopyList(teamPlayerInfos, TeamPlayerInfoVO.class);
+        return this.getBaseMapper().teamPlayerInfoQry(String.valueOf(teamId));
     }
 
     /**

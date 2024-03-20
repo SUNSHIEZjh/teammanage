@@ -15,4 +15,21 @@
         </if>
         ORDER BY ti.create_time DESC
     </select>
+
+    <select id="teamPlayerInfoQry" resultType="com.team_manage.controller.teaminfo.vo.TeamPlayerInfoVO">
+        SELECT
+        tpi.*,
+        pi.player_name
+        FROM
+        team_player_info tpi
+        left  join
+        player_info pi on  pi.key_id = tpi.player_id
+        WHERE
+        pi.delete_flag = 0
+          and tpi.delete_flag = 0
+        <if test="teamId != null and teamId != ''">
+            AND tpi.team_id = #{teamId}
+        </if>
+        ORDER BY tpi.create_time DESC
+    </select>
 </mapper>
