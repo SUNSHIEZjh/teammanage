@@ -1,5 +1,7 @@
 package com.team_manage.utils;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.security.MessageDigest;
 import java.util.Base64;
 import java.util.UUID;
@@ -56,6 +58,11 @@ public class SaltUtils {
      * @return 密码是否相同
      */
     public static boolean verify(String password, String salt, String passwordMd5) {
-        return md5Password(password, salt).equals(passwordMd5);
+        if(StringUtils.isNotEmpty(salt)){
+            return md5Password(password, salt).equals(passwordMd5);
+        }else{
+            return password.equals(passwordMd5);
+        }
+
     }
 }

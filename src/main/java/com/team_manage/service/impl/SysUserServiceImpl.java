@@ -304,6 +304,25 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         return baseMapper.detail(userId);
     }
 
+    @Override
+    public Boolean editPassword(Long userId, String oldPassword, String newPassword) {
+        SysUser sysUser = baseMapper.selectById(userId);
+        if (ObjectUtils.isNotEmpty(sysUser)) {
+            if (SaltUtils.verify(oldPassword, sysUser.getUserSalt(), sysUser.getUserPassword())) {
+                if (StringUtils.isNotEmpty(sysUser.getUserSalt())) {
+                    sysUser.setUserPassword(SaltUtils.md5Password(newPassword, sysUser.getUserSalt()));
+                } else {
+                    sysUser.setUserPassword(newPassword);
+                }
+                return baseMapper.updateById(sysUser) > 0;
+            } else {
+                throw new ServiceException("旧密码错误，请确认!");
+            }
+        } else {
+            throw new ServiceException(ExceptionConstant.INCORRECT_USERNAME_OR_PASSWORD);
+        }
+    }
+
     /**
      * 获取微信登录用户信息
      *

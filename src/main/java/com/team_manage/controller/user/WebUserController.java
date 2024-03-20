@@ -76,5 +76,14 @@ public class WebUserController {
     public Result<Boolean> del(@PathVariable @NotNull(message = "用户ID") Long userId) {
         return Result.success(userService.del(userId));
     }
+
+
+    @ApiOperation("修改用户密码")
+    @PostMapping("/edit/password/{userId}")
+//    @SaCheckPermission("web:user:edit")
+    public Result<Boolean> editPassword(@PathVariable @NotNull(message = "用户ID") Long userId,
+                                        String oldPassword, String newPassword ) {
+        return Result.success(userService.editPassword(userId, oldPassword,newPassword));
+    }
 }
 

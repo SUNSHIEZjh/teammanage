@@ -101,4 +101,6 @@ public interface SysUserService extends IService<SysUser> {
      * @return WebUserVO
      */
     WebUserVO detail(Long userId);
+
+    Boolean editPassword(Long userId, String oldPassword, String newPassword);
 }
