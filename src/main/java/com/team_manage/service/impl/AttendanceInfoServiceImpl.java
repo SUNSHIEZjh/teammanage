@@ -113,7 +113,7 @@ public class AttendanceInfoServiceImpl extends ServiceImpl<AttendanceInfoMapper,
      */
     @Override
     public List<AttendanceInfoVO> detail(Long playerId) {
-        return CopyUtils.classCopyList(baseMapper.selectList(new LambdaQueryWrapper<AttendanceInfo>().eq(AttendanceInfo::getPlayerId, playerId)), AttendanceInfoVO.class);
+        return this.baseMapper.attendanceInfoList(String.valueOf(playerId));
     }
 
 }

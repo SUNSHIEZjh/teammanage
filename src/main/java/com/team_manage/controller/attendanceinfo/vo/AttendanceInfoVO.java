@@ -37,6 +37,12 @@ public class AttendanceInfoVO implements Serializable {
     private Long playerId;
 
     /**
+     * 球员名称
+     */
+    @ApiModelProperty("球员名称")
+    private String playerName;
+
+    /**
      * 考勤年份
      */
     @ApiModelProperty(value = "考勤年份")

@@ -30,4 +30,27 @@
         GROUP BY ai.player_id
         ORDER BY ai.attendance_year,ai.attendance_month DESC
     </select>
+
+    <select id="attendanceInfoList" resultType="com.team_manage.controller.attendanceinfo.vo.AttendanceInfoVO">
+        SELECT
+        ai.player_id,
+        ai.attendance_year,
+        ai.attendance_month,
+        concat( ai.attendance_year,'-',ai.attendance_month) as attendanceYearMonth,
+        ai.sick_leave_day,
+        ai.absenteeism_day,
+        ai.personal_leave_day,
+        pi.player_name
+        FROM
+        attendance_info  ai
+        LEFT JOIN player_info pi ON pi.key_id = ai.player_id
+        AND pi.delete_flag = 0
+        WHERE
+        ai.delete_flag = 0
+        <if test="playerId != null and playerId != ''">
+            AND ai.player_id  = #{playerId}
+        </if>
+
+        ORDER BY ai.attendance_year,ai.attendance_month DESC
+    </select>
 </mapper>

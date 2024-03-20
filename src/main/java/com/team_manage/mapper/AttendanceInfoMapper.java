@@ -7,6 +7,8 @@ import com.team_manage.controller.attendanceinfo.vo.AttendanceInfoVO;
 import com.team_manage.entity.AttendanceInfo;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 /**
  * <p>
  * 用户表 Mapper 接口
@@ -25,6 +27,10 @@ public interface AttendanceInfoMapper extends BaseMapper<AttendanceInfo> {
      * @return WebUserVO
      */
     IPage<AttendanceInfoVO> attendanceInfoPageByQry(@Param("qry") AttendanceInfoQry qry, @Param("pages") IPage<AttendanceInfoVO> pages);
+
+
+
+    List<AttendanceInfoVO> attendanceInfoList(@Param("playerId") String playerId);
 
 
 }
