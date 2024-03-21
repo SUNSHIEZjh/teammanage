@@ -33,7 +33,7 @@ public class AttendanceInfoDTO implements Serializable {
      * 业务主键
      */
     @ApiModelProperty(value = "业务主键")
-    private String keyId;
+    private Long keyId;
     /**
      * 球员ID
      */

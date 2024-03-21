@@ -33,7 +33,7 @@ public class NoticeInfoDTO implements Serializable {
      * 业务主键
      */
     @ApiModelProperty(value = "业务主键")
-    private String keyId;
+    private Long keyId;
     /**
      * 公告标题
      */

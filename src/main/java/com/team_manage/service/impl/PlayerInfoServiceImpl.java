@@ -79,6 +79,7 @@ public class PlayerInfoServiceImpl extends ServiceImpl<PlayerInfoMapper, PlayerI
         playerOnDepart.setNativePlace(playerInfoDTO.getNativePlace());
         playerOnDepart.setSex(playerInfoDTO.getSex());
         playerOnDepart.setPlaryLocation(playerInfoDTO.getPlaryLocation());
+        updateOnDepart(playerOnDepart);
         return this.updateById(playerInfo);
     }
 
@@ -140,6 +141,16 @@ public class PlayerInfoServiceImpl extends ServiceImpl<PlayerInfoMapper, PlayerI
         PlayerOnDepart playerOnDepart = CopyUtils.classCopy(playerOnDepartDTO, PlayerOnDepart.class);
         playerOnDepart.setOnDepartFlag("1");
         playerOnDepartMapper.insert(playerOnDepart);
+        return true;
+    }
+
+    /**
+     * 新增入职信息
+     * @param playerOnDepart
+     * @return
+     */
+    public boolean updateOnDepart( PlayerOnDepart playerOnDepart){
+        playerOnDepartMapper.updateById(playerOnDepart);
         return true;
     }
 
