@@ -255,8 +255,8 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         if (ObjectUtils.isNotEmpty(one)) {
             throw new ServiceException("用户账号已存在，修改失败!");
         }
-        // 登出当前用户
-        StpUtil.logout(userId);
+        // 登出当前用户 -- 自己修改 暂不做退出登录
+//        StpUtil.logout(userId);
         // 修改用户信息
         SysUser user = CopyUtils.classCopy(userDTO, SysUser.class);
         user.setUserId(userId);
