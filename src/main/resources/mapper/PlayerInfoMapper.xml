@@ -59,7 +59,7 @@
         ifnull(pi.account,a.user_account) as account ,
         pod.plary_location,
         pod.native_place,
-        t.teanName,
+        t.teamName,
         pod.on_depart_flag
     FROM
         user a
@@ -68,7 +68,7 @@
     LEFT JOIN player_on_depart pod ON pi.key_id = pod.player_id
     LEFT JOIN (
     SELECT
-    GROUP_CONCAT( ti.team_name ) AS teanName,
+    GROUP_CONCAT( distinct ti.team_name ) AS teamName,
     tpi.player_id
     FROM
     team_info ti
