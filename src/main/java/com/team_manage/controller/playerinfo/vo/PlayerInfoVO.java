@@ -101,6 +101,13 @@ public class PlayerInfoVO implements Serializable {
     @ApiModelProperty(value = "账号")
     private String account;
 
+
+    /**
+     * 用户表账号
+     */
+    @ApiModelProperty(value = "用户表账号")
+    private String userAccount;
+
     /**
      * 籍贯
      */

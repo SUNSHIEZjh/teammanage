@@ -56,7 +56,7 @@
         pi.education,
         pi.height,
         pi.weight,
-        a.user_account,
+        ifnull(pi.account,a.user_account) as account ,
         pod.plary_location,
         pod.native_place,
         t.teanName,
