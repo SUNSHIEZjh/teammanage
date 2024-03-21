@@ -49,6 +49,8 @@
         a.user_name,
         a.user_sex,
         a.user_birthday,
+        a.user_avatar,
+        a.user_phone,
         pi.plyer_no,
         pi.age,
         pi.education,

@@ -172,7 +172,19 @@ public class PlayerInfoVO implements Serializable {
     /**
      * 是否在职 0 - 离职 1- 在职
      */
-    @ApiModelProperty("修改时间")
+    @ApiModelProperty("是否在职 0 - 离职 1- 在职")
     private String onDepartFlag;
+
+    /**
+     * 用户头像
+     */
+    @ApiModelProperty("用户头像")
+    private String userAvatar;
+
+    /**
+     * 手机号码
+     */
+    @ApiModelProperty("手机号码")
+    private String userPhone;
 
 }
