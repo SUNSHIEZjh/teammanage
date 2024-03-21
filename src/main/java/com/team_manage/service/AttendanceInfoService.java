@@ -69,5 +69,5 @@ public interface AttendanceInfoService extends IService<AttendanceInfo> {
      * @param playerId 球员ID
      * @return 考情集合
      */
-    List<AttendanceInfoVO> detail(Long playerId);
+    List<AttendanceInfoVO> detail(Long playerId, String attendanceYear, String attendanceMonth);
 }

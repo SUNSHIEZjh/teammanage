@@ -27,7 +27,7 @@
         <if test="qry.selectMonth != null and qry.selectMonth != ''">
             AND ai.attendance_month  = {qry.selectMonth}
         </if>
-        GROUP BY ai.player_id
+        GROUP BY ai.player_id,ai.attendance_year,ai.attendance_month
         ORDER BY ai.attendance_year,ai.attendance_month DESC
     </select>
 
@@ -50,7 +50,12 @@
         <if test="playerId != null and playerId != ''">
             AND ai.player_id  = #{playerId}
         </if>
-
+        <if test="attendanceYear != null and attendanceYear != ''">
+            AND ai.attendance_year  = #{attendanceYear}
+        </if>
+        <if test="attendanceMonth != null and attendanceMonth != ''">
+            AND ai.attendance_month  = #{attendanceMonth}
+        </if>
         ORDER BY ai.attendance_year,ai.attendance_month DESC
     </select>
 </mapper>

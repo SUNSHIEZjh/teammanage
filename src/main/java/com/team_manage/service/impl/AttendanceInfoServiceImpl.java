@@ -112,8 +112,8 @@ public class AttendanceInfoServiceImpl extends ServiceImpl<AttendanceInfoMapper,
      * @return WebUserVO
      */
     @Override
-    public List<AttendanceInfoVO> detail(Long playerId) {
-        return this.baseMapper.attendanceInfoList(String.valueOf(playerId));
+    public List<AttendanceInfoVO> detail(Long playerId,String attendanceYear, String attendanceMonth) {
+        return this.baseMapper.attendanceInfoList(String.valueOf(playerId),attendanceYear, attendanceMonth);
     }
 
 }

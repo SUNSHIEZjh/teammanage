@@ -42,8 +42,8 @@ public class AttendanceInfoController {
     @ApiOperation("考勤管理明细")
     @GetMapping("/detail/{playerId}")
 //    @SaCheckPermission("web:user:detail")
-    public Result<List<AttendanceInfoVO>> detail(@PathVariable @NotNull(message = "球员ID") Long playerId) {
-        return Result.success(attendanceInfoService.detail(playerId));
+    public Result<List<AttendanceInfoVO>> detail(@PathVariable @NotNull(message = "球员ID") Long playerId,String attendanceYear ,String attendanceMonth) {
+        return Result.success(attendanceInfoService.detail(playerId, attendanceYear, attendanceMonth ));
     }
 
     @ApiOperation("新增考勤管理信息")

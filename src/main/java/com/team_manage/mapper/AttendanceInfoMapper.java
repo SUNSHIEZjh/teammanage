@@ -30,7 +30,7 @@ public interface AttendanceInfoMapper extends BaseMapper<AttendanceInfo> {
 
 
 
-    List<AttendanceInfoVO> attendanceInfoList(@Param("playerId") String playerId);
+    List<AttendanceInfoVO> attendanceInfoList(@Param("playerId") String playerId,@Param("attendanceYear")String attendanceYear ,@Param("attendanceMonth")String attendanceMonth);
 
 
 }
