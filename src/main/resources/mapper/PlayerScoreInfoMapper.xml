@@ -18,7 +18,6 @@
         LEFT JOIN player_info pi ON pi.key_id = psr.player_id
         where
         psr.delete_flag = 0
-        and pi.delete_flag = 0
         <if test="qry.playerName != null and qry.playerName != ''">
             AND pi.player_name LIKE CONCAT('%' , #{playerName}, '%')
         </if>
@@ -44,7 +43,6 @@
         left join match_info mi on mi.key_id = psr.match_id
         where
         psr.delete_flag = 0
-        and pi.delete_flag = 0
         <if test="playerId != null and playerId != ''">
             AND psr.player_id = #{playerId}
         </if>
