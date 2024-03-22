@@ -8,8 +8,15 @@
         mi.match_name,
         mi.match_date,
         mi.match_level,
-        mi.match_team
+        mi.team_id,
+        ti1.team_name,
+        mi.match_team_id,
+        ti2.team_name as match_team_name
         from  match_info mi
+
+        left join team_info ti1 on ti1.key_id = mi.team_id
+
+        left join team_info ti2 on ti2.key_id = mi.match_team_id
         where
         mi.delete_flag = 0
         <if test="qry.matchName != null and qry.matchName != ''">

@@ -46,10 +46,26 @@ public class MatchInfoVO implements Serializable {
     @ApiModelProperty("赛事等级")
     private String matchLevel;
     /**
+     * 参赛球队
+     */
+    @ApiModelProperty(value = "参赛球队")
+    private Long teamId;
+
+    /**
+     * 参赛球队
+     */
+    @ApiModelProperty(value = "参赛球队名称")
+    private String teamName;
+    /**
      * 赛事对手
      */
-    @ApiModelProperty("赛事对手")
-    private String matchTeam;
+    @ApiModelProperty(value = "赛事对手名称")
+    private String matchTeamName;
+    /**
+     * 赛事对手
+     */
+    @ApiModelProperty(value = "赛事对手")
+    private Long matchTeamId;
     /**
      * 删除标志，0未删除 1删除
      */

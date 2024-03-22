@@ -50,9 +50,13 @@ public class MatchInfo {
 
 
     /**
+     * 参赛队伍
+     */
+    private Long teamId;
+    /**
      * 赛事对手
      */
-    private String matchTeam;
+    private Long matchTeamId;
 
 
     /**
